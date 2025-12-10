@@ -10,8 +10,9 @@ theme = "nix"
   HeaderHostname = "yaoyue.org"
   About = """
     Yao lives in San Francisco. You can find her biking or walking around the
-    city, taking her kids to the playground, or more likely spending time
-    thinking about software and systems.
+    city, taking her kids around town, or more likely spending time thinking
+    about systems, some of which happen to be made of computer software. One
+    day she will be a writer.
   """
   ProfilePicture = "images/tf.jpeg"
 
