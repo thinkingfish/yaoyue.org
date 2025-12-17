@@ -1,0 +1,35 @@
+---
+import "@/styles/global.css";
+
+import BaseHead from "@layouts/BaseHead.astro";
+import { getCollection } from "astro:content";
+
+const bio = await getCollection("bio");
+const profile = bio[0];
+
+interface Props {
+	title: string;
+	description: string;
+	image?: ImageMetadata;
+	noindex?: boolean; // you need to opt-in to no indexing, as it hides the page from search engines
+}
+
+const { title, description, image, noindex = false } = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang="en" transition:animate="fade" class={profile.data.theme == "dark" ? "dark" : ""}>
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			image={image ? image : undefined}
+			noindex={noindex}
+		/>
+	</head>
+	<body id="body" class="min-h-[100lvh]">
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
