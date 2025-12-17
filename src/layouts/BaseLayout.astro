@@ -2,10 +2,7 @@
 import "@/styles/global.css";
 
 import BaseHead from "@layouts/BaseHead.astro";
-import { getCollection } from "astro:content";
-
-const bio = await getCollection("bio");
-const profile = bio[0];
+import ThemeToggle from "@components/ThemeToggle.astro";
 
 interface Props {
 	title: string;
@@ -18,7 +15,7 @@ const { title, description, image, noindex = false } = Astro.props as Props;
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="fade" class={profile.data.theme == "dark" ? "dark" : ""}>
+<html lang="en" transition:animate="fade">
 	<head>
 		<BaseHead
 			title={title}
@@ -28,6 +25,7 @@ const { title, description, image, noindex = false } = Astro.props as Props;
 		/>
 	</head>
 	<body id="body" class="min-h-[100lvh]">
+		<ThemeToggle />
 		<main>
 			<slot />
 		</main>

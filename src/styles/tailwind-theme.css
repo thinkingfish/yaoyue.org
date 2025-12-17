@@ -54,3 +54,23 @@
 	--font-mono:
 		"SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace";
 }
+
+@utility btn {
+	background-color: var(--color-btn-light);
+	color: var(--color-btn-light-text);
+	transition-property: all;
+	transition-duration: 300ms;
+	&:hover {
+		background-color: var(--color-btn-light-hover);
+	}
+	&:active {
+		scale: 0.95;
+	}
+	:where(.dark, .dark *) & {
+		background-color: var(--color-btn-dark);
+		color: var(--color-btn-dark-text);
+		&:hover {
+			background-color: var(--color-btn-dark-hover);
+		}
+	}
+}
