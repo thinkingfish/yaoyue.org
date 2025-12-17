@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* tailwind plugins */
+@plugin "@tailwindcss/forms";
+
+/* dark mode */
+@variant dark (&:where(.dark, .dark *));
+
+/* theme definition import */
+@import "./tailwind-theme.css";
+
+/* other imports into specific layers */
+@import "./markdown-content.css" layer(components);
+
+/* https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer */
+@layer base {
+	:root {
+		/* default font */
+		font-family: var(--font-sans);
+		/* 20% larger base font size */
+		font-size: 120%;
+	}
+
+	* {
+		@apply outline-none;
+	}
+	*:focus-visible {
+		@apply ring-primary-700 rounded-xs ring-2 outline-none;
+	}
+	html {
+		@apply bg-base-50 text-base-800 dark:bg-base-950 dark:text-base-200 leading-[1.6rem] scheme-light dark:scheme-dark;
+		scroll-behavior: smooth;
+		-moz-text-size-adjust: none;
+		-webkit-text-size-adjust: none;
+		text-size-adjust: none;
+	}
+	button {
+		@apply cursor-pointer;
+	}
+}
+
+@layer components {
+	.site-container {
+		@apply mx-auto max-w-lg px-4;
+	}
+}

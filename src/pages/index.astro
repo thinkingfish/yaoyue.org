@@ -1,0 +1,48 @@
+---
+import Links from "@components/Links/Links.astro";
+import Socials from "@components/Socials/Socials.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+
+const bio = await getCollection("bio");
+
+const profile = bio[0];
+const { name, avatar } = profile.data;
+const { Content } = await render(profile);
+---
+
+<BaseLayout
+	title={`${name}'s links and socials`}
+	description={`Fantastic projects from ${name}, and their social links for you to follow.'`}
+	image={avatar}
+>
+	<div class="relative min-h-[100lvh]">
+		<!-- content -->
+		<section id="profile" class="site-container relative pt-12 text-center md:pt-20">
+			<!-- profile image -->
+			<div class="mx-auto flex justify-center">
+				<figure class="">
+					<Image
+						src={avatar}
+						alt={`${name}'s avatar`}
+						width={128}
+						densities={[1.5, 2]}
+						quality="high"
+						loading="eager"
+						class="aspect-square max-w-28 rounded-full object-cover"
+					/>
+				</figure>
+			</div>
+
+			<h1 class="mt-4 text-xl sm:text-3xl text-primary-600">{name}</h1>
+
+			<div class="markdown-content mt-2 text-sm leading-snug text-pretty sm:text-base">
+				<Content />
+			</div>
+		</section>
+
+		<Socials />
+		<Links />
+	</div>
+</BaseLayout>
