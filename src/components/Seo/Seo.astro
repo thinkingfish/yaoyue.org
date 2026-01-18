@@ -23,7 +23,8 @@ if (image) {
 		src: image,
 		format: "webp",
 		quality: "high",
-		width: 480,
+		width: 320,
+		height: 320,
 	});
 }
 
@@ -56,8 +57,8 @@ const imageUrl = trimEndSlash(Astro.site?.toString() || "") + optimizedImage?.sr
 		},
 		image: {
 			type: "image/webp",
-			width: optimizedImage?.attributes.width || "480",
-			height: optimizedImage?.attributes.height || "480",
+			width: optimizedImage?.attributes.width || "320",
+			height: optimizedImage?.attributes.height || "320",
 			alt: "profile image",
 		},
 	}}
