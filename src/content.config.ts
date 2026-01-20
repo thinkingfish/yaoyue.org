@@ -17,6 +17,7 @@ const socialsCollection = defineCollection({
 	loader: glob({ pattern: "**/[^_]*.{yml,yaml}", base: "./src/data/socials" }),
 	schema: z.object({
 		title: z.string(),
+		hint: z.string().optional(),
 		url: z.string(),
 		order: z.number(),
 		icon: z.enum([

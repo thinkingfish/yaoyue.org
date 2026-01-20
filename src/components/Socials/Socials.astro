@@ -20,7 +20,7 @@ const sortedSocials = socials.sort((a, b) => {
 	<ul class="flex w-full flex-wrap items-center justify-center gap-4">
 		{
 			sortedSocials.map((social) => (
-				<li>
+				<li class="group relative">
 					<a
 						href={social.data.url}
 						class="btn flex h-10 w-10 items-center justify-center rounded-full"
@@ -30,6 +30,11 @@ const sortedSocials = socials.sort((a, b) => {
 						<span class="sr-only">{social.data.title}</span>
 						<SocialIcon icon={social.data.icon} />
 					</a>
+					{social.data.hint && (
+						<span class="pointer-events-none absolute bottom-full mb-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-base-200 dark:bg-base-800 px-2 py-1 text-xs text-base-600 dark:text-base-400 opacity-0 transition-opacity group-hover:opacity-100">
+							{social.data.hint}
+						</span>
+					)}
 				</li>
 			))
 		}
