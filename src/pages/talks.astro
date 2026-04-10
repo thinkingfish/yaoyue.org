@@ -1,5 +1,61 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+
+const conferenceTalks = [
+	{
+		title: "Why I Left Big-O in the Dustbin When I Left School",
+		event: "Unlocked Conf, San Jose, 2026",
+		recordingUrl: "https://www.youtube.com/watch?v=ZeI4apdgupg",
+	},
+	{
+		title: "Effective Performance Engineering at Twitter-Scale",
+		event: "QCon San Francisco, 2023",
+		recordingUrl: "https://www.infoq.com/presentations/performance-engineering-scale/",
+	},
+	{
+		title: "Evolution: From Distributed Cache to Feature Store",
+		event: "MoCon, Seattle, 2023",
+		recordingUrl: "https://www.youtube.com/watch?v=K_W_DZ07hwo",
+	},
+	{
+		title: "Using Persistent Memory with Pelikan",
+		event: "Persistent Memory Summit, 2020",
+		recordingUrl: "https://www.conferencecast.tv/talk-29390-using-persistent-memory-with-pelikan",
+	},
+	{
+		title: "In-Memory Caching: Curb Tail Latency with Pelikan",
+		event: "QCon San Francisco, 2016",
+		recordingUrl: "https://www.infoq.com/presentations/pelikan-distributed-caching/",
+	},
+	{
+		title: "Cache \u00e0 la Carte: A Framework for In-Memory Caching",
+		event: "Strange Loop, 2015",
+		recordingUrl: "https://www.classcentral.com/course/youtube-cache-a-la-carte-a-framework-for-in-memory-caching-by-yao-yue-141483",
+	},
+];
+
+const podcastsInterviews = [
+	{
+		title: "Caching at Twitter with Yao Yue",
+		event: "Software Engineering Daily, 2023",
+		recordingUrl: "https://softwareengineeringdaily.com/2023/01/12/caching-at-twitter-with-yao-yue/",
+	},
+	{
+		title: "Twitter\u2019s Yao Yue on Latency, Performance Monitoring, & Caching at Scale",
+		event: "InfoQ Podcast",
+		recordingUrl: "https://www.infoq.com/podcasts/yao-yue-twitter-cache/",
+	},
+	{
+		title: "Yao Yue on Making Twitter\u2019s Pelikan Cache Fast And Reliable",
+		event: "InfoQ Interview",
+		recordingUrl: "https://www.infoq.com/interviews/yue-twitter-pelikan-cache/",
+	},
+	{
+		title: "Cache-it #1: Applying Lessons from Caching to ML Feature Stores",
+		event: "Momento",
+		recordingUrl: "https://www.gomomento.com/blog/cache-it-episode-1-applying-lessons-from-caching-to-ml-feature-stores-with-yao-yue/",
+	},
+];
 ---
 
 <BaseLayout
@@ -11,7 +67,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 			<h1 class="text-xl sm:text-3xl text-primary-600">Talks</h1>
 
 			<div class="mt-8 text-base-700 dark:text-base-300">
-				<p class="mb-4">Slides from various conference talks and presentations.</p>
+				<p class="mb-4">Conference talks, podcasts, and interviews.</p>
 				<a
 					href="https://github.com/thinkingfish/misc/tree/main/talks"
 					class="inline-block btn rounded-md px-6 py-3"
@@ -22,9 +78,49 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 				</a>
 			</div>
 
-			<div class="mt-8">
+			<div class="mt-12 text-left">
+				<h2 class="text-lg sm:text-xl text-primary-600 font-medium">Conference Talks</h2>
+				<ul class="mt-4 space-y-6">
+					{conferenceTalks.map((talk) => (
+						<li>
+							<a
+								href={talk.recordingUrl}
+								class="text-base-800 dark:text-base-200 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								{talk.title}
+							</a>
+							<p class="mt-1 text-sm text-base-500 dark:text-base-400">
+								{talk.event}
+							</p>
+						</li>
+					))}
+				</ul>
+
+				<h2 class="mt-12 text-lg sm:text-xl text-primary-600 font-medium">Podcasts & Interviews</h2>
+				<ul class="mt-4 space-y-6">
+					{podcastsInterviews.map((talk) => (
+						<li>
+							<a
+								href={talk.recordingUrl}
+								class="text-base-800 dark:text-base-200 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								{talk.title}
+							</a>
+							<p class="mt-1 text-sm text-base-500 dark:text-base-400">
+								{talk.event}
+							</p>
+						</li>
+					))}
+				</ul>
+			</div>
+
+			<div class="mt-12">
 				<a href="/" class="text-primary-600 hover:text-primary-700 underline">
-					← Back home
+					&larr; Back home
 				</a>
 			</div>
 		</section>
