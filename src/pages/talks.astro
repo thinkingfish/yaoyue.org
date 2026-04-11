@@ -1,66 +1,38 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-const conferenceTalks = [
-	{
-		title: "Why I Left Big-O in the Dustbin When I Left School",
-		event: "Unlocked Conf, San Jose, 2026",
-		recordingUrl: "https://www.youtube.com/watch?v=ZeI4apdgupg",
-	},
-	{
-		title: "Effective Performance Engineering at Twitter-Scale",
-		event: "QCon San Francisco, 2023",
-		recordingUrl: "https://www.infoq.com/presentations/performance-engineering-scale/",
-	},
-	{
-		title: "Evolution: From Distributed Cache to Feature Store",
-		event: "MoCon, Seattle, 2023",
-		recordingUrl: "https://www.youtube.com/watch?v=K_W_DZ07hwo",
-	},
-	{
-		title: "Using Persistent Memory with Pelikan",
-		event: "Persistent Memory Summit, 2020",
-		recordingUrl: "https://www.conferencecast.tv/talk-29390-using-persistent-memory-with-pelikan",
-	},
-	{
-		title: "In-Memory Caching: Curb Tail Latency with Pelikan",
-		event: "QCon San Francisco, 2016",
-		recordingUrl: "https://www.infoq.com/presentations/pelikan-distributed-caching/",
-	},
-	{
-		title: "Cache \u00e0 la Carte: A Framework for In-Memory Caching",
-		event: "Strange Loop, 2015",
-		recordingUrl: "https://www.classcentral.com/course/youtube-cache-a-la-carte-a-framework-for-in-memory-caching-by-yao-yue-141483",
-	},
-];
+function parseTable(md: string) {
+	const lines = md.trim().split('\n').filter(l => l.trim());
+	const headers = lines[0].split('|').map(h => h.trim()).filter(Boolean);
+	return lines.slice(2).map(line => {
+		const values = line.split('|').map(v => v.trim()).filter(Boolean);
+		return Object.fromEntries(headers.map((h, i) => [h, values[i]]));
+	});
+}
 
-const podcastsInterviews = [
-	{
-		title: "Steve Waldman and Yao Yue Explore Complexity in Computing Systems and Economics",
-		event: "Complex Spice (Spice Labs), 2026",
-		recordingUrl: "https://www.youtube.com/watch?v=sabwTPxfVgU",
-	},
-	{
-		title: "Caching at Twitter with Yao Yue",
-		event: "Software Engineering Daily, 2023",
-		recordingUrl: "https://softwareengineeringdaily.com/2023/01/12/caching-at-twitter-with-yao-yue/",
-	},
-	{
-		title: "Twitter\u2019s Yao Yue on Latency, Performance Monitoring, & Caching at Scale",
-		event: "InfoQ Podcast",
-		recordingUrl: "https://www.infoq.com/podcasts/yao-yue-twitter-cache/",
-	},
-	{
-		title: "Yao Yue on Making Twitter\u2019s Pelikan Cache Fast And Reliable",
-		event: "InfoQ Interview",
-		recordingUrl: "https://www.infoq.com/interviews/yue-twitter-pelikan-cache/",
-	},
-	{
-		title: "Cache-it #1: Applying Lessons from Caching to ML Feature Stores",
-		event: "Momento",
-		recordingUrl: "https://www.gomomento.com/blog/cache-it-episode-1-applying-lessons-from-caching-to-ml-feature-stores-with-yao-yue/",
-	},
-];
+// title                   | event                              | recordingUrl
+// Editable as a markdown table — just add/remove/reorder rows.
+
+const conferenceTalks = parseTable(`
+| title                                                      | event                        | recordingUrl                                                                                                                     |
+|------------------------------------------------------------|------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| Why I Left Big-O in the Dustbin When I Left School         | Unlocked Conf, San Jose, 2026 | https://www.youtube.com/watch?v=ZeI4apdgupg                                                                                     |
+| Effective Performance Engineering at Twitter-Scale         | QCon San Francisco, 2023     | https://www.infoq.com/presentations/performance-engineering-scale/                                                               |
+| Evolution: From Distributed Cache to Feature Store         | MoCon, Seattle, 2023         | https://www.youtube.com/watch?v=K_W_DZ07hwo                                                                                     |
+| Using Persistent Memory with Pelikan                       | Persistent Memory Summit, 2020 | https://www.conferencecast.tv/talk-29390-using-persistent-memory-with-pelikan                                                   |
+| In-Memory Caching: Curb Tail Latency with Pelikan          | QCon San Francisco, 2016     | https://www.infoq.com/presentations/pelikan-distributed-caching/                                                                 |
+| Cache à la Carte: A Framework for In-Memory Caching        | Strange Loop, 2015           | https://www.classcentral.com/course/youtube-cache-a-la-carte-a-framework-for-in-memory-caching-by-yao-yue-141483                 |
+`);
+
+const podcastsInterviews = parseTable(`
+| title                                                                              | event                            | recordingUrl                                                                                                    |
+|------------------------------------------------------------------------------------|----------------------------------|-----------------------------------------------------------------------------------------------------------------|
+| Steve Waldman and Yao Yue Explore Complexity in Computing Systems and Economics    | Complex Spice (Spice Labs), 2026 | https://www.youtube.com/watch?v=sabwTPxfVgU                                                                     |
+| Caching at Twitter with Yao Yue                                                   | Software Engineering Daily, 2023 | https://softwareengineeringdaily.com/2023/01/12/caching-at-twitter-with-yao-yue/                                |
+| Twitter's Yao Yue on Latency, Performance Monitoring, & Caching at Scale          | InfoQ Podcast                    | https://www.infoq.com/podcasts/yao-yue-twitter-cache/                                                           |
+| Yao Yue on Making Twitter's Pelikan Cache Fast And Reliable                        | InfoQ Interview                  | https://www.infoq.com/interviews/yue-twitter-pelikan-cache/                                                     |
+| Cache-it #1: Applying Lessons from Caching to ML Feature Stores                   | Momento                          | https://www.gomomento.com/blog/cache-it-episode-1-applying-lessons-from-caching-to-ml-feature-stores-with-yao-yue/ |
+`);
 ---
 
 <BaseLayout
