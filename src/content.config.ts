@@ -46,6 +46,7 @@ const socialsCollection = defineCollection({
 			"whatsapp",
 			"telegram",
 			"email",
+			"scholar",
 		]),
 	}),
 });
