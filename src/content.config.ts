@@ -61,8 +61,20 @@ const linksCollection = defineCollection({
 	}),
 });
 
+const blogCollection = defineCollection({
+	loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/data/blog" }),
+	schema: z.object({
+		title: z.string(),
+		description: z.string().optional(),
+		pubDate: z.coerce.date(),
+		updatedDate: z.coerce.date().optional(),
+		draft: z.boolean().default(false),
+	}),
+});
+
 export const collections = {
 	socials: socialsCollection,
 	bio: bioCollection,
 	links: linksCollection,
+	blog: blogCollection,
 };

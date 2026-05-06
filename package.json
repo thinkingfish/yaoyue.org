@@ -12,6 +12,7 @@
 		"lint": "eslint ."
 	},
 	"dependencies": {
+		"@astrojs/rss": "^4.0.18",
 		"@astrojs/sitemap": "3.3.1",
 		"@tailwindcss/forms": "0.5.10",
 		"@tailwindcss/vite": "4.1.5",

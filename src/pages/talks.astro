@@ -1,56 +1,19 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-function parseTable(md: string) {
-	const lines = md.trim().split('\n').filter(l => l.trim());
-	const headers = lines[0].split('|').map(h => h.trim()).filter(Boolean);
-	return lines.slice(2).map(line => {
-		const values = line.split('|').map(v => v.trim()).filter(Boolean);
-		return Object.fromEntries(headers.map((h, i) => [h, values[i]]));
-	});
-}
-
-// title                   | event                              | recordingUrl
-// Editable as a markdown table — just add/remove/reorder rows.
-
-const conferenceTalks = parseTable(`
-| title                                                      | event                         | recordingUrl                                                                                                                     |
-|------------------------------------------------------------|-------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Why I Left Big-O in the Dustbin When I Left School         | Unlocked Conf, San Jose, 2026 | https://www.youtube.com/watch?v=ZeI4apdgupg                                                                                     |
-| Beyond Line Charts                                         | YOW! Melbourne/Brisbane/Sydney, 2025 | https://www.youtube.com/watch?v=vUu4s2vQne0                                                                              |
-| Effective Performance Engineering at Twitter-Scale         | QCon San Francisco, 2023      | https://www.infoq.com/presentations/performance-engineering-scale/                                                               |
-| Evolution: From Distributed Cache to Feature Store         | MoCon, Seattle, 2023          | https://www.youtube.com/watch?v=K_W_DZ07hwo                                                                                     |
-| Using Persistent Memory with Pelikan                       | Persistent Memory Summit, Santa Clara 2020 | https://www.youtube.com/watch?v=leaIWRk_2bY                                                                                     |
-| In-Memory Caching: Curb Tail Latency with Pelikan          | QCon San Francisco, 2016      | https://www.infoq.com/presentations/pelikan-distributed-caching/                                                                 |
-| Cache à la Carte: A Framework for In-Memory Caching        | Strange Loop, St. Louis, 2015 | https://www.youtube.com/watch?v=pLRztKYvMLk                                                                                     |
-| Scaling Redis at Twitter                                   | Meetup at Rackspace, San Francisco, 2014  | https://www.youtube.com/watch?v=rP9EKvWt0zo                                                                                      |
-`);
-
-const podcastsInterviews = parseTable(`
-| title                                                                              | event                            | recordingUrl                                                                                                    |
-|------------------------------------------------------------------------------------|----------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| Steve Waldman and Yao Yue Explore Complexity in Computing Systems and Economics    | Complex Spice (Spice Labs), 2026 | https://www.youtube.com/watch?v=sabwTPxfVgU                                                                     |
-| Caching at Twitter                                                                 | Software Engineering Daily, 2023 | https://softwareengineeringdaily.com/2023/01/12/caching-at-twitter-with-yao-yue/                                |
-| Momento, the World's Fastest Cache                                                 | Open Source Startup Podcast 2022 | https://creators.spotify.com/pod/profile/ossstartuppodcast/episodes/E49-Momento--the-Worlds-Fastest-Cache-e1nf7ec |
-| Twitter's Yao Yue on Latency, Performance Monitoring, & Caching at Scale           | InfoQ Podcast                    | https://www.infoq.com/podcasts/yao-yue-twitter-cache/                                                           |
-| Yao Yue on Making Twitter's Pelikan Cache Fast And Reliable                        | InfoQ Interview                  | https://www.infoq.com/interviews/yue-twitter-pelikan-cache/                                                     |
-| Cache-it #1: Applying Lessons from Caching to ML Feature Stores                    | Momento                          | https://www.gomomento.com/blog/cache-it-episode-1-applying-lessons-from-caching-to-ml-feature-stores-with-yao-yue/ |
-`);
+import { conferenceTalks, podcastsInterviews } from "@/data/talks";
 ---
 
-<BaseLayout
-	title="Talks - Yao Yue"
-	description="Conference talks and presentations by Yao Yue"
->
+<BaseLayout title="Talks - Yao Yue" description="Conference talks and presentations by Yao Yue">
 	<div class="relative min-h-[100lvh]">
 		<section class="site-container relative pt-12 text-center md:pt-20">
-			<h1 class="text-xl sm:text-3xl text-primary-600">Talks</h1>
+			<h1 class="text-primary-600 text-xl sm:text-3xl">Talks</h1>
 
-			<div class="mt-8 text-base-700 dark:text-base-300">
+			<div class="text-base-700 dark:text-base-300 mt-8">
 				<p class="mb-4">Conference talks, podcasts, and interviews.</p>
 				<a
 					href="https://github.com/thinkingfish/misc/tree/main/talks"
-					class="inline-block btn rounded-md px-6 py-3"
+					class="btn inline-block rounded-md px-6 py-3"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
@@ -59,49 +22,77 @@ const podcastsInterviews = parseTable(`
 			</div>
 
 			<div class="mt-12 text-left">
-				<h2 class="text-lg sm:text-xl text-primary-600 font-medium">Conference Talks</h2>
+				<h2 class="text-primary-600 text-lg font-medium sm:text-xl">Conference Talks</h2>
 				<ul class="mt-4 space-y-6">
-					{conferenceTalks.map((talk) => (
-						<li>
-							<a
-								href={talk.recordingUrl}
-								class="text-base-800 dark:text-base-200 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{talk.title}<svg class="inline-block ml-1 w-3.5 h-3.5 align-baseline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
-							</a>
-							<p class="mt-1 text-sm text-base-500 dark:text-base-400">
-								{talk.event}
-							</p>
-						</li>
-					))}
+					{
+						conferenceTalks.map((talk) => (
+							<li>
+								<a
+									href={talk.recordingUrl}
+									class="text-base-800 dark:text-base-200 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									{talk.title}
+									<svg
+										class="ml-1 inline-block h-3.5 w-3.5 align-baseline"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<>
+											<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+											<polyline points="15 3 21 3 21 9" />
+											<line x1="10" y1="14" x2="21" y2="3" />
+										</>
+									</svg>
+								</a>
+								<p class="text-base-500 dark:text-base-400 mt-1 text-sm">{talk.event}</p>
+							</li>
+						))
+					}
 				</ul>
 
-				<h2 class="mt-12 text-lg sm:text-xl text-primary-600 font-medium">Podcasts & Interviews</h2>
+				<h2 class="text-primary-600 mt-12 text-lg font-medium sm:text-xl">Podcasts & Interviews</h2>
 				<ul class="mt-4 space-y-6">
-					{podcastsInterviews.map((talk) => (
-						<li>
-							<a
-								href={talk.recordingUrl}
-								class="text-base-800 dark:text-base-200 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{talk.title}<svg class="inline-block ml-1 w-3.5 h-3.5 align-baseline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
-							</a>
-							<p class="mt-1 text-sm text-base-500 dark:text-base-400">
-								{talk.event}
-							</p>
-						</li>
-					))}
+					{
+						podcastsInterviews.map((talk) => (
+							<li>
+								<a
+									href={talk.recordingUrl}
+									class="text-base-800 dark:text-base-200 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									{talk.title}
+									<svg
+										class="ml-1 inline-block h-3.5 w-3.5 align-baseline"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<>
+											<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+											<polyline points="15 3 21 3 21 9" />
+											<line x1="10" y1="14" x2="21" y2="3" />
+										</>
+									</svg>
+								</a>
+								<p class="text-base-500 dark:text-base-400 mt-1 text-sm">{talk.event}</p>
+							</li>
+						))
+					}
 				</ul>
 			</div>
 
 			<div class="mt-12">
-				<a href="/" class="text-primary-600 hover:text-primary-700 underline">
-					&larr; Back home
-				</a>
+				<a href="/" class="text-primary-600 hover:text-primary-700 underline"> &larr; Back home </a>
 			</div>
 		</section>
 	</div>
