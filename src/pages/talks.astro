@@ -61,6 +61,17 @@ import { conferenceTalks, podcastsInterviews } from "@/data/talks";
 										PDF
 									</a>
 								)}
+								{talk.liveSlidesUrl && (
+									<a
+										href={talk.liveSlidesUrl}
+										class="border-base-300 dark:border-base-700 text-base-600 dark:text-base-400 hover:border-primary-600 hover:text-primary-600 dark:hover:border-primary-500 dark:hover:text-primary-500 relative -top-0.5 ml-2 inline-block rounded border px-1.5 py-0.5 align-baseline text-[0.65rem] leading-none font-semibold tracking-wide uppercase transition-colors"
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label={`Live slides for ${talk.title}`}
+									>
+										Deck
+									</a>
+								)}
 								<p class="text-base-500 dark:text-base-400 mt-1 text-sm">{talk.event}</p>
 							</li>
 						))
@@ -104,6 +115,17 @@ import { conferenceTalks, podcastsInterviews } from "@/data/talks";
 										aria-label={`Slides (PDF) for ${talk.title}`}
 									>
 										PDF
+									</a>
+								)}
+								{talk.liveSlidesUrl && (
+									<a
+										href={talk.liveSlidesUrl}
+										class="border-base-300 dark:border-base-700 text-base-600 dark:text-base-400 hover:border-primary-600 hover:text-primary-600 dark:hover:border-primary-500 dark:hover:text-primary-500 relative -top-0.5 ml-2 inline-block rounded border px-1.5 py-0.5 align-baseline text-[0.65rem] leading-none font-semibold tracking-wide uppercase transition-colors"
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label={`Live slides for ${talk.title}`}
+									>
+										Deck
 									</a>
 								)}
 								<p class="text-base-500 dark:text-base-400 mt-1 text-sm">{talk.event}</p>
