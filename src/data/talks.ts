@@ -5,12 +5,20 @@
 // `liveSlidesUrl` is optional — link to an interactive/web-hosted version of the deck.
 
 export interface Talk {
+	slug: string;
 	date: string;
 	title: string;
 	event: string;
 	recordingUrl: string;
 	slidesUrl?: string;
 	liveSlidesUrl?: string;
+}
+
+function slugify(s: string): string {
+	return s
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, "-")
+		.replace(/^-+|-+$/g, "");
 }
 
 function parseTable(md: string): Talk[] {
@@ -29,10 +37,12 @@ function parseTable(md: string): Talk[] {
 	const headers = splitRow(lines[0]);
 	return lines.slice(2).map((line) => {
 		const values = splitRow(line);
-		const row = Object.fromEntries(
-			headers.map((h, i) => [h, values[i] ?? ""]),
-		) as Record<string, string>;
+		const row = Object.fromEntries(headers.map((h, i) => [h, values[i] ?? ""])) as Record<
+			string,
+			string
+		>;
 		const talk: Talk = {
+			slug: row.slug || slugify(row.title),
 			date: row.date,
 			title: row.title,
 			event: row.event,
