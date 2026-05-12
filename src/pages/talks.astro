@@ -1,4 +1,5 @@
 ---
+import TalkEntry from "@components/TalkEntry.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
 import { conferenceTalks, podcastsInterviews } from "@/data/talks";
@@ -15,115 +16,13 @@ import { conferenceTalks, podcastsInterviews } from "@/data/talks";
 
 			<div class="mt-12 text-left">
 				<h2 class="text-primary-600 text-lg font-medium sm:text-xl">Conference Talks</h2>
-				<ul class="mt-4 space-y-6">
-					{
-						conferenceTalks.map((talk) => (
-							<li>
-								<a
-									href={talk.recordingUrl}
-									class="text-base-800 dark:text-base-200 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									{talk.title}
-									<svg
-										class="ml-1 inline-block h-3.5 w-3.5 align-baseline"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										stroke-width="2.5"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-									>
-										<>
-											<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-											<polyline points="15 3 21 3 21 9" />
-											<line x1="10" y1="14" x2="21" y2="3" />
-										</>
-									</svg>
-								</a>
-								{talk.slidesUrl && (
-									<a
-										href={talk.slidesUrl}
-										class="border-base-300 dark:border-base-700 text-base-600 dark:text-base-400 hover:border-primary-600 hover:text-primary-600 dark:hover:border-primary-500 dark:hover:text-primary-500 relative -top-1 ml-2 inline-flex h-4 items-center justify-center rounded border px-1.5 align-baseline text-[0.65rem] leading-none font-semibold tracking-wide uppercase transition-colors"
-										target="_blank"
-										rel="noopener noreferrer"
-										aria-label={`Slides (PDF) for ${talk.title}`}
-									>
-										PDF
-									</a>
-								)}
-								{talk.liveSlidesUrl && (
-									<a
-										href={talk.liveSlidesUrl}
-										class="border-base-300 dark:border-base-700 text-base-600 dark:text-base-400 hover:border-primary-600 hover:text-primary-600 dark:hover:border-primary-500 dark:hover:text-primary-500 relative -top-1 ml-2 inline-flex h-4 items-center justify-center rounded border px-1.5 align-baseline text-[0.65rem] leading-none font-semibold tracking-wide uppercase transition-colors"
-										target="_blank"
-										rel="noopener noreferrer"
-										aria-label={`Live slides for ${talk.title}`}
-									>
-										html
-									</a>
-								)}
-								<p class="text-base-500 dark:text-base-400 mt-1 text-sm">{talk.event}</p>
-							</li>
-						))
-					}
+				<ul class="mt-4 space-y-3">
+					{conferenceTalks.map((talk) => <TalkEntry talk={talk} />)}
 				</ul>
 
 				<h2 class="text-primary-600 mt-12 text-lg font-medium sm:text-xl">Podcasts & Interviews</h2>
-				<ul class="mt-4 space-y-6">
-					{
-						podcastsInterviews.map((talk) => (
-							<li>
-								<a
-									href={talk.recordingUrl}
-									class="text-base-800 dark:text-base-200 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									{talk.title}
-									<svg
-										class="ml-1 inline-block h-3.5 w-3.5 align-baseline"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										stroke-width="2.5"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-									>
-										<>
-											<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-											<polyline points="15 3 21 3 21 9" />
-											<line x1="10" y1="14" x2="21" y2="3" />
-										</>
-									</svg>
-								</a>
-								{talk.slidesUrl && (
-									<a
-										href={talk.slidesUrl}
-										class="border-base-300 dark:border-base-700 text-base-600 dark:text-base-400 hover:border-primary-600 hover:text-primary-600 dark:hover:border-primary-500 dark:hover:text-primary-500 relative -top-1 ml-2 inline-flex h-4 items-center justify-center rounded border px-1.5 align-baseline text-[0.65rem] leading-none font-semibold tracking-wide uppercase transition-colors"
-										target="_blank"
-										rel="noopener noreferrer"
-										aria-label={`Slides (PDF) for ${talk.title}`}
-									>
-										PDF
-									</a>
-								)}
-								{talk.liveSlidesUrl && (
-									<a
-										href={talk.liveSlidesUrl}
-										class="border-base-300 dark:border-base-700 text-base-600 dark:text-base-400 hover:border-primary-600 hover:text-primary-600 dark:hover:border-primary-500 dark:hover:text-primary-500 relative -top-1 ml-2 inline-flex h-4 items-center justify-center rounded border px-1.5 align-baseline text-[0.65rem] leading-none font-semibold tracking-wide uppercase transition-colors"
-										target="_blank"
-										rel="noopener noreferrer"
-										aria-label={`Live slides for ${talk.title}`}
-									>
-										html
-									</a>
-								)}
-								<p class="text-base-500 dark:text-base-400 mt-1 text-sm">{talk.event}</p>
-							</li>
-						))
-					}
+				<ul class="mt-4 space-y-3">
+					{podcastsInterviews.map((talk) => <TalkEntry talk={talk} />)}
 				</ul>
 			</div>
 
