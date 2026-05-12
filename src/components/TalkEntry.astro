@@ -8,10 +8,10 @@ interface Props {
 const { talk } = Astro.props;
 ---
 
-<li class="flex items-center gap-2">
+<li class="relative">
 	<a
 		href={`#${talk.slug}`}
-		class="text-base-300 dark:text-base-700 hover:text-primary-600 dark:hover:text-primary-500 shrink-0 transition-colors"
+		class="text-base-300 dark:text-base-700 hover:text-primary-600 dark:hover:text-primary-500 absolute top-1/2 right-full mr-2 -translate-y-1/2 transition-colors"
 		aria-label={`Permalink to ${talk.title}`}
 	>
 		<svg
@@ -29,7 +29,7 @@ const { talk } = Astro.props;
 	</a>
 	<div
 		id={talk.slug}
-		class="talk-card ring-base-200/60 dark:ring-base-800/50 flex-1 scroll-mt-24 rounded-md px-3 py-2 ring-1 transition-colors duration-300"
+		class="talk-card ring-base-200/60 dark:ring-base-800/50 scroll-mt-24 rounded-md px-3 py-2 ring-1 transition-colors duration-300"
 	>
 		<a
 			href={talk.recordingUrl}
