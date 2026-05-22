@@ -1,0 +1,49 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+	year: "numeric",
+	month: "short",
+	day: "numeric",
+});
+---
+
+<BaseLayout title="Blog - Yao Yue" description="Blog posts by Yao Yue">
+	<div class="relative min-h-[100lvh]">
+		<section class="site-container relative pt-12 text-center md:pt-20">
+			<h1 class="text-primary-600 text-xl sm:text-3xl">Blog</h1>
+
+			<div class="mt-12 text-left">
+				<ul class="space-y-3">
+					{
+						posts.map((post) => (
+							<li class="ring-base-200/60 dark:ring-base-800/50 rounded-md px-3 py-2 ring-1">
+								<a
+									href={`/blog/${post.id}/`}
+									class="text-base-800 dark:text-base-200 hover:text-primary-600 dark:hover:text-primary-500 font-medium transition-colors"
+								>
+									{post.data.title}
+								</a>
+								<div class="text-base-600 dark:text-base-400 mt-1 text-sm">
+									<time datetime={post.data.pubDate.toISOString()}>
+										{dateFormatter.format(post.data.pubDate)}
+									</time>
+									{post.data.description && <span> &middot; {post.data.description}</span>}
+								</div>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+
+			<div class="mt-12">
+				<a href="/" class="text-primary-600 hover:text-primary-700 underline"> &larr; Back home </a>
+			</div>
+		</section>
+	</div>
+</BaseLayout>

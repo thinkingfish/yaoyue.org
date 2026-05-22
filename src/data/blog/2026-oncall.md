@@ -1,8 +1,8 @@
 ---
 title: Being oncall taught me everything
 pubDate: 2026-05-22
-draft: flase
---
+draft: false
+---
 Though I have never officially owned the title of DevOps or SRE, the majority of my engineering hours in the first few years of my career were spent on understanding and mitigating incidents. Without exageration, being oncall made me the engineer I am.
 
 I was oncall for distributed caching at Twitter for 7.5 years (2010-2017), including the 15 months or so when I managed the team, and the week that officially ended one day past the due date of my first-born. It was not just any service that I was responsible for—Cache had the highest throughput by far, measured by requests per second, of any services at Twitter. And as a load-bearing service, it was far from problem-free—by the time Dan Luu and I co-authored the [cache incident survey](https://danluu.com/cache-incidents/), we counted no fewer than a dozen high profile (tier 0 or tier 1, which generally meant prolonged site-wide degradation) incidents that were attributed fully or significantly to cache.
