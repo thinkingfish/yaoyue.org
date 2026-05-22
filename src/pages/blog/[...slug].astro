@@ -22,7 +22,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 
 <BaseLayout title={`${post.data.title} - Yao Yue`} description={post.data.description ?? post.data.title}>
 	<div class="relative min-h-[100lvh]">
-		<section class="site-container relative pt-12 md:pt-20">
+		<section class="site-container relative max-w-3xl pt-12 md:pt-20">
 			<header class="text-center">
 				<h1 class="text-primary-600 text-2xl sm:text-3xl">{post.data.title}</h1>
 				<div class="text-base-600 dark:text-base-400 mt-2 text-sm">
