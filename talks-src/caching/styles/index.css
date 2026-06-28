@@ -1,0 +1,183 @@
+/* ===================================================================
+   Pelikan / Flexoki design system  —  borrowed from pelikan.io
+   paper #FFFCF0 · ink #100F0F · orange #DA702C · blue #4385BE
+   IBM Plex Sans + IBM Plex Mono · bordered cards · mono badges
+   (global stylesheet — applies to every slide)
+=================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg:     #FFFCF0;
+  --bg-2:   #E6E4D9;
+  --bg-3:   #DAD8CE;
+  --ink:    #100F0F;
+  --ink-2:  #6F6E69;
+  --muted:  #878580;
+  --border: #CECDC3;
+  --orange: #DA702C;
+  --blue:   #4385BE;
+}
+
+html, body, #app, .slidev-page { background-color: var(--bg); }
+
+.slidev-layout {
+  background-color: var(--bg) !important;
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.0rem;
+  line-height: 1.6;
+  padding: 2.4rem 3rem;
+}
+
+.slidev-layout h1 {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 2.25rem;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.35em;
+}
+.slidev-layout h1::after {
+  content: '';
+  display: block;
+  width: 2.4rem;
+  height: 3px;
+  margin-top: 0.5rem;
+  background: var(--orange);
+  border-radius: 2px;
+}
+.text-center h1::after { margin-left: auto; margin-right: auto; }
+
+.slidev-layout h2 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: var(--ink);
+  margin: 0 0 0.2em;
+}
+.slidev-layout h3 {
+  font-weight: 500;
+  font-size: 0.98rem;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.slidev-layout a { color: var(--blue); text-decoration: none; }
+.slidev-layout a:hover { color: var(--orange); }
+.slidev-layout strong { color: var(--ink); font-weight: 600; }
+::selection { background: var(--orange); color: #fff; }
+
+/* ---- bracketed mono label: renders as [text], no box ---- */
+.label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.0rem;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.label::before { content: '['; }
+.label::after  { content: ']'; }
+.label--accent { color: var(--orange); }
+
+/* ---- bordered rounded card (cf. pelikan .post-card / .talk-card) ---- */
+.card { padding: 0; }
+.card ul { margin: 0.3rem 0 0; padding-left: 1.05rem; }
+.card li { margin: 0.12rem 0; color: var(--ink-2); }
+.card .head { display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.15rem; }
+.card .name { font-weight: 600; font-size: 1.05rem; color: var(--ink); }
+/* lists styled to match .reveal divs */
+.card ul.rlist li { font-size: 1.25rem; color: var(--ink-2); margin-top: 0.15rem; }
+
+.cards { display: grid; gap: 1.4rem; margin-top: 0.4rem; }
+.cards.c2 { grid-template-columns: 1fr 1fr; }
+.cards.c3 { grid-template-columns: repeat(3, 1fr); }
+
+/* 2-column cards: centered group, equal height, rounded outline */
+.cards.c2 {
+  max-width: 78%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: stretch;
+  gap: 3rem;
+}
+.cards.c2 > .card {
+  border: 1px solid var(--orange);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+}
+
+/* ---- eyebrow label: KEY TAKEAWAY etc. ---- */
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin: 0.5rem 0 0.1rem;
+}
+.eyebrow.blue { color: var(--blue); }
+.takeaway { color: var(--ink); font-weight: 500; }
+.secondary { color: var(--ink-2); font-size: 0.92rem; }
+
+/* ---- link pills (cf. pelikan .quick-link) ---- */
+.links { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: 0.55rem; margin-left: 1.2rem}
+/* scoped under .slidev-layout to beat Slidev's client link border (dashed) */
+.slidev-layout .pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  padding: 2px 7px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--ink-2) !important;
+}
+.slidev-layout .pill:hover { border-color: var(--orange); color: var(--orange) !important; }
+
+/* ---- left-rule callout (impact / warning) — accent line, not a box ---- */
+.callout {
+  border-left: 3px solid var(--orange);
+  padding: 0.1rem 0 0.1rem 0.95rem;
+  margin-top: 0.9rem;
+}
+.callout.warn { border-left-color: var(--blue); }
+.callout ul { margin: 0.25rem 0 0; padding-left: 1.1rem; }
+.callout li { color: var(--ink-2); margin: 0.1rem 0; }
+
+/* ---- pull quote — left rule, italic, no box ---- */
+.quote {
+  border-left: 3px solid var(--border);
+  padding: 0.1rem 0 0.1rem 0.95rem;
+  font-style: italic;
+  color: var(--ink);
+  margin-top: 0.9rem;
+}
+.quote .who { display: block; font-style: normal; font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
+
+.accent { color: var(--orange); font-weight: 600; }
+.mono { font-family: 'IBM Plex Mono', monospace; }
+.dim { color: var(--ink-2); }
+.note { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; }
+
+/* phase timeline row */
+.phase { font-weight: 600; font-size: 1.75rem; color: var(--ink-2); }
+.reveal { color: var(--ink-2); font-size: 1.25rem; margin-top: 0.15rem; }
+
+/* ---- title slide ---- */
+.title-slide { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+.title-slide h1 { font-size: 3.2rem; }
+.title-slide h1::after { margin: 1.9rem auto 0; }
+.byline { color: var(--ink-2); margin-top: 3.9rem; letter-spacing: 0.04em; }
+
+/* ---- section / cover divider ---- */
+.divider { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; }
+.divider .kicker { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+.divider h1 { font-size: 2.8rem; }
+.divider h1::after { display: none; }
+.divider .q { font-size: 1.7rem; font-weight: 600; color: var(--ink); font-style: italic; max-width: 22ch; }
+.divider .q .accent { font-style: italic; }
+
+/* avatars on collaboration slide */
+.avatars { display: flex; gap: 1.6rem; justify-content: center; margin-top: 0.5rem; }
+.who-card { text-align: center; }
+.who-card img { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); }
+.who-card .n { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--ink-2); margin-top: 0.4rem; }

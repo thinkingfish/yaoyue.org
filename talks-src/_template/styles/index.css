@@ -1,0 +1,6 @@
+/* Deck-wide styles — Slidev auto-loads talks-src/<name>/styles/index.css
+   (global, un-scoped). Put your design system here. */
+
+.slidev-layout {
+  /* example: font-family, background, padding, color vars … */
+}

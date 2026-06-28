@@ -1,0 +1,15 @@
+{
+  "name": "talk-caching",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build --base /talks/caching/ --out ../../public/talks/caching",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.10.1",
+    "@slidev/theme-default": "latest",
+    "vue": "^3.4.29"
+  }
+}
