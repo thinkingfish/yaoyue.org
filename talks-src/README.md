@@ -19,8 +19,11 @@ Then add a row to `src/data/talks.ts` with `liveSlidesUrl: /talks/<name>/` to li
 
 ## Conventions (baked into the template)
 
-- **`routerMode: hash`** in the headmatter — deep links (`#/3`) work with no server
-  redirects, required for subpath hosting.
+- **History routing** (Slidev default) → clean URLs like `/talks/<name>/3`. Deep-link
+  and refresh work because `build-talks.sh` writes an SPA fallback per talk into
+  `public/_redirects` (Cloudflare serves existing assets first, falls back to the
+  deck's `index.html`). Do **not** set `routerMode: hash` — with a subpath base it
+  leaks the base into the route (`#/talks/<name>/3`).
 - **`<Img src="foo.png" />`** for every image (file in `public/`, no leading slash).
   Plain `<img src="/foo.png">` / `![](/foo.png)` break the build — Slidev tries to
   import the path and Vite's `server.fs.allow` rejects it.

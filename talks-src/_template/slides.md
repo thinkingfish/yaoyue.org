@@ -1,9 +1,8 @@
 ---
 theme: default
 title: Your Talk Title
-# routerMode: hash makes deep links (#/3) work with NO server redirects —
-# required for hosting under a subpath like /talks/<name>/. Keep it.
-routerMode: hash
+# Default (history) routing -> clean URLs like /talks/<name>/3. Deep-link/refresh
+# works because scripts/build-talks.sh writes an SPA fallback to public/_redirects.
 mdc: true
 class: text-center
 ---

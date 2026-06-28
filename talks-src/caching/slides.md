@@ -8,7 +8,6 @@ class: text-center
 highlighter: shiki
 transition: slide-left
 mdc: true
-routerMode: hash
 fonts:
   sans: IBM Plex Sans
   mono: IBM Plex Mono
