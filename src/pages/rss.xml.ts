@@ -2,12 +2,12 @@ import rss, { type RSSFeedItem } from "@astrojs/rss";
 import type { APIContext } from "astro";
 import { getCollection } from "astro:content";
 
-import { conferenceTalks, podcastsInterviews } from "@/data/talks";
+import { publicTalks, podcastsInterviews } from "@/data/talks";
 
 export async function GET(context: APIContext) {
 	const site = context.site ?? new URL("https://yaoyue.org/");
 
-	const talkItems: RSSFeedItem[] = [...conferenceTalks, ...podcastsInterviews].map((talk) => ({
+	const talkItems: RSSFeedItem[] = [...publicTalks, ...podcastsInterviews].map((talk) => ({
 		title: talk.title,
 		link: talk.recordingUrl,
 		pubDate: new Date(talk.date),
