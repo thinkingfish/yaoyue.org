@@ -21,7 +21,10 @@ for dir in "$SRC"/*/; do
     cd "$dir"
     [ -d node_modules ] || npm install
     rm -rf "$OUT/$name"
-    npx slidev build --base "/talks/$name/" --out "$OUT/$name"
+    # Strip VSCODE_CWD: @unocss/preset-icons disables its Node FS icon loader
+    # whenever it's set (isVSCode gate), so a build launched from a VSCode
+    # terminal silently drops every i-carbon:* icon → tofu nav bar / controls.
+    env -u VSCODE_CWD npx slidev build --base "/talks/$name/" --out "$OUT/$name"
   )
   names+=("$name")
 done
