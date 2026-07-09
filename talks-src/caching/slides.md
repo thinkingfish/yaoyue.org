@@ -117,7 +117,7 @@ Now the arc — a bunch of closely related research, and I'll tell you why.
 <div style="display:flex; justify-content:center; align-items:flex-start; gap:16rem; margin-top:0rem;">
   <div style="text-align:center;">
     <Img src="JunchengYang.jpg" alt="Juncheng Yang" style="height:220px; object-fit:contain;" />
-    <div class="mono" style="margin-top:0.3rem; color:var(--ink-2); font-size:0.8rem;"><a href="https://jasony.me/" target="_blank" rel="noopener noreferrer">Juncheng Yang</a></div>
+    <div class="mono" style="margin-top:0.3rem; color:var(--ink-2); font-size:0.8rem;"><a href="https://jasony.me/" target="_blank" rel="noopener noreferrer">Juncheng Yang</a> <a href="https://doi.org/10.1184/R1/28500515" target="_blank" rel="noopener noreferrer">[thesis]</a></div>
   </div>
   <div style="text-align:center;">
     <Img src="YazhuoZhang.jpg" alt="Yazhuo Zhang" style="height:220px; object-fit:contain;" />
