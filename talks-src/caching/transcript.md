@@ -1,6 +1,6 @@
 # Datacenter Caching: A Round-Trip to the Ephemeral Store — Talk Transcript
 
-- **Speaker:** Yao Yue · Yao's Systems Meetup
+- **Speaker:** Yao Yue · South Bay Systems Meetup <https://southbaysystems.xyz/>
 - **Video:** <https://www.youtube.com/watch?v=jL68eC3HyFQ> (segment **3:22 – 44:05**)
 - **Source:** YouTube auto-generated captions, cleaned up (disfluencies and mis-transcriptions fixed) and grouped under the matching slides in [`slides.md`](./slides.md).
 
