@@ -2,22 +2,22 @@
 import TalkEntry from "@components/TalkEntry.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-import { conferenceTalks, podcastsInterviews } from "@/data/talks";
+import { Talks, podcastsInterviews } from "@/data/talks";
 ---
 
-<BaseLayout title="Talks - Yao Yue" description="Conference talks and presentations by Yao Yue">
+<BaseLayout title="Talks - Yao Yue" description="Public talks by Yao Yue">
 	<div class="relative min-h-[100lvh]">
 		<section class="site-container relative pt-12 text-center md:pt-20">
 			<h1 class="text-primary-600 text-xl sm:text-3xl">Talks</h1>
 
 			<div class="text-base-700 dark:text-base-300 mt-8">
-				<p>Conference talks, podcasts, and interviews.</p>
+				<p>Public talks, podcasts, and interviews.</p>
 			</div>
 
 			<div class="mt-12 pl-7 text-left sm:pl-0">
-				<h2 class="text-primary-600 text-lg font-medium sm:text-xl">Conference Talks</h2>
+				<h2 class="text-primary-600 text-lg font-medium sm:text-xl">Public Talks</h2>
 				<ul class="mt-4 space-y-3">
-					{conferenceTalks.map((talk) => <TalkEntry talk={talk} />)}
+					{publicTalks.map((talk) => <TalkEntry talk={talk} />)}
 				</ul>
 
 				<h2 class="text-primary-600 mt-12 text-lg font-medium sm:text-xl">Podcasts & Interviews</h2>

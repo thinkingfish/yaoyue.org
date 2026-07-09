@@ -57,7 +57,7 @@ function parseTable(md: string): Talk[] {
 const SLIDES_BASE = "https://github.com/thinkingfish/misc/blob/main/talks";
 const slides = (filename: string) => `${SLIDES_BASE}/${encodeURIComponent(filename)}`;
 
-export const conferenceTalks: Talk[] = parseTable(`
+export const publicTalks: Talk[] = parseTable(`
 | date       | title                                                      | event                                      | recordingUrl                                                                                                                     | slidesUrl                                                                          | liveSlidesUrl                          |
 |------------|------------------------------------------------------------|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|----------------------------------------|
 | 2026-03-01 | Why I Left Big-O in the Dustbin When I Left School         | Unlocked Conf, San Jose, 2026              | https://www.youtube.com/watch?v=ZeI4apdgupg                                                                                      | ${slides("Why I left Big-O in the dustbin when I left school.pdf")}                |                                        |
