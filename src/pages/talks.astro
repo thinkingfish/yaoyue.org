@@ -2,10 +2,21 @@
 import TalkEntry from "@components/TalkEntry.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-import { publicTalks, podcastsInterviews } from "@/data/talks";
+import { SITE } from "@/data/site";
+import { podcastsInterviews, publicTalks } from "@/data/talks";
+import { breadcrumbSchema } from "@/lib/structured-data";
+
+const jsonLd = breadcrumbSchema([
+	{ name: "Home", url: `${SITE.url}/` },
+	{ name: "Talks", url: `${SITE.url}/talks/` },
+]);
 ---
 
-<BaseLayout title="Talks - Yao Yue" description="Public talks by Yao Yue">
+<BaseLayout
+	title="Talks - Yao Yue"
+	description="Public talks, conference presentations, podcasts, and interviews by Yao Yue on caching, distributed systems, and performance engineering at scale."
+	jsonLd={jsonLd}
+>
 	<div class="relative min-h-[100lvh]">
 		<section class="site-container relative pt-12 text-center md:pt-20">
 			<h1 class="text-primary-600 text-xl sm:text-3xl">Talks</h1>

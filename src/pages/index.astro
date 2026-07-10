@@ -2,20 +2,43 @@
 import Links from "@components/Links/Links.astro";
 import Socials from "@components/Socials/Socials.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
+
+import { SITE } from "@/data/site";
+import { profilePageSchema } from "@/lib/structured-data";
 
 const bio = await getCollection("bio");
 
 const profile = bio[0];
 const { name, avatar } = profile.data;
 const { Content } = await render(profile);
+
+// Absolute URL for the avatar, used as the Person entity's image.
+const avatarImg = await getImage({ src: avatar, format: "webp", width: 320, height: 320 });
+const avatarUrl = new URL(avatarImg.src, Astro.site).toString();
+
+// `sameAs` links disambiguate the Person entity for search + AI knowledge
+// graphs. Pull every real profile from the socials collection (skip the
+// mailto: contact link, which isn't an identity profile).
+const socials = await getCollection("socials");
+const sameAs = socials
+	.map((s) => s.data.url)
+	.filter((url) => !url.startsWith("mailto:"))
+	.sort();
+
+const profileSchema = profilePageSchema({
+	sameAs,
+	imageUrl: avatarUrl,
+	description: SITE.description,
+});
 ---
 
 <BaseLayout
-	title={`${name}'s links and socials`}
-	description={`Fantastic projects from ${name}, and their social links for you to follow.'`}
+	title={`${name} — systems engineer & writer`}
+	description="Personal site of Yao Yue — San Francisco–based systems engineer and writer on systems, software, and the people who build them. Blog, talks, and links."
 	image={avatar}
+	jsonLd={profileSchema}
 >
 	<div class="relative min-h-[100lvh]">
 		<!-- content -->
@@ -35,7 +58,7 @@ const { Content } = await render(profile);
 				</figure>
 			</div>
 
-			<h1 class="mt-4 text-xl sm:text-3xl text-primary-600">{name}</h1>
+			<h1 class="text-primary-600 mt-4 text-xl sm:text-3xl">{name}</h1>
 
 			<div class="markdown-content mt-2 text-sm leading-snug text-pretty sm:text-base">
 				<Content />
@@ -59,10 +82,10 @@ const { Content } = await render(profile);
 					xmlns="http://www.w3.org/2000/svg"
 					aria-hidden="true"
 				>
-					<rect width="24" height="24" rx="4" fill="#EE802F" />
-					<circle cx="6.5" cy="17.5" r="1.6" fill="white" />
-					<path d="M5 11a8 8 0 0 1 8 8h2.5A10.5 10.5 0 0 0 5 8.5V11z" fill="white" />
-					<path d="M5 5.5a13.5 13.5 0 0 1 13.5 13.5H21A16 16 0 0 0 5 3v2.5z" fill="white" />
+					<rect width="24" height="24" rx="4" fill="#EE802F"></rect>
+					<circle cx="6.5" cy="17.5" r="1.6" fill="white"></circle>
+					<path d="M5 11a8 8 0 0 1 8 8h2.5A10.5 10.5 0 0 0 5 8.5V11z" fill="white"></path>
+					<path d="M5 5.5a13.5 13.5 0 0 1 13.5 13.5H21A16 16 0 0 0 5 3v2.5z" fill="white"></path>
 				</svg>
 			</a>
 		</section>

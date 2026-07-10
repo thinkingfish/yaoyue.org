@@ -1,17 +1,32 @@
 ---
 import "@/styles/global.css";
 
-import BaseHead from "@layouts/BaseHead.astro";
 import ThemeToggle from "@components/ThemeToggle.astro";
+import BaseHead from "@layouts/BaseHead.astro";
 
 interface Props {
 	title: string;
 	description: string;
 	image?: ImageMetadata;
 	noindex?: boolean; // you need to opt-in to no indexing, as it hides the page from search engines
+	author?: string;
+	article?: {
+		publishedTime: string;
+		modifiedTime?: string;
+	};
+	// Page-specific schema.org JSON-LD (ProfilePage, BlogPosting, BreadcrumbList, …).
+	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, image, noindex = false } = Astro.props as Props;
+const {
+	title,
+	description,
+	image,
+	noindex = false,
+	author,
+	article,
+	jsonLd,
+} = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -22,6 +37,9 @@ const { title, description, image, noindex = false } = Astro.props as Props;
 			description={description}
 			image={image ? image : undefined}
 			noindex={noindex}
+			author={author}
+			article={article}
+			jsonLd={jsonLd}
 		/>
 	</head>
 	<body id="body" class="min-h-[100lvh]">

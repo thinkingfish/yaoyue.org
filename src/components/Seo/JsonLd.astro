@@ -1,0 +1,15 @@
+---
+// Renders one or more schema.org JSON-LD blocks.
+// Accepts a single schema object or an array of them.
+interface Props {
+	schema: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { schema } = Astro.props;
+const blocks = Array.isArray(schema) ? schema : [schema];
+
+// Escape "<" so a stray "</script>" inside string values can't break out.
+const serialize = (obj: Record<string, unknown>) => JSON.stringify(obj).replace(/</g, "\\u003c");
+---
+
+{blocks.map((block) => <script type="application/ld+json" is:inline set:html={serialize(block)} />)}

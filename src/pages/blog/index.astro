@@ -2,6 +2,9 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
+import { SITE } from "@/data/site";
+import { breadcrumbSchema } from "@/lib/structured-data";
+
 const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 	(a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 );
@@ -11,9 +14,18 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 	month: "short",
 	day: "numeric",
 });
+
+const jsonLd = breadcrumbSchema([
+	{ name: "Home", url: `${SITE.url}/` },
+	{ name: "Blog", url: `${SITE.url}/blog/` },
+]);
 ---
 
-<BaseLayout title="Blog - Yao Yue" description="Blog posts by Yao Yue">
+<BaseLayout
+	title="Blog - Yao Yue"
+	description="Essays by Yao Yue on systems, software, engineering leadership, and the craft of building — and the people who build."
+	jsonLd={jsonLd}
+>
 	<div class="relative min-h-[100lvh]">
 		<section class="site-container relative pt-12 text-center md:pt-20">
 			<h1 class="text-primary-600 text-xl sm:text-3xl">Blog</h1>

@@ -1,15 +1,39 @@
 ---
+import JsonLd from "@components/Seo/JsonLd.astro";
 import Seo from "@components/Seo/Seo.astro";
 import { ClientRouter } from "astro:transitions";
+
+import { websiteSchema } from "@/lib/structured-data";
 
 export interface Props {
 	title: string;
 	description: string;
 	image?: ImageMetadata;
 	noindex?: boolean;
+	author?: string;
+	article?: {
+		publishedTime: string;
+		modifiedTime?: string;
+	};
+	// Page-specific structured data (ProfilePage, BlogPosting, BreadcrumbList, …).
+	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, image, noindex = false } = Astro.props as Props;
+const {
+	title,
+	description,
+	image,
+	noindex = false,
+	author,
+	article,
+	jsonLd,
+} = Astro.props as Props;
+
+// The WebSite entity ships on every page; page-specific schema is appended.
+const structuredData = [
+	websiteSchema(),
+	...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []),
+];
 ---
 
 <meta charset="utf-8" />
@@ -55,7 +79,16 @@ const { title, description, image, noindex = false } = Astro.props as Props;
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" title="Yao Yue" href="/rss.xml" />
 
-<Seo title={title} description={description} image={image} noindex={noindex} />
+<Seo
+	title={title}
+	description={description}
+	image={image}
+	noindex={noindex}
+	author={author}
+	article={article}
+/>
+
+<JsonLd schema={structuredData} />
 
 <!-- no fallback as I saw issues with firefox fallback -->
 <ClientRouter fallback="none" />

@@ -2,31 +2,42 @@
 import { getImage } from "astro:assets";
 import { SEO } from "astro-seo";
 
-interface BaseProps {
+import defaultImage from "@/data/bio/avatar.jpg";
+
+interface Props {
 	title: string;
 	description: string;
+	image?: ImageMetadata;
 	noindex?: boolean;
+	author?: string;
+	// When present, the page is treated as an article (og:type=article) and
+	// article:published_time / article:modified_time are emitted.
+	article?: {
+		publishedTime: string;
+		modifiedTime?: string;
+	};
 }
 
-interface GenProps extends BaseProps {
-	type: "general";
-	image: ImageMetadata;
-}
-
-const { title, description, image, noindex = false } = Astro.props as GenProps;
+const {
+	title,
+	description,
+	image,
+	noindex = false,
+	author = "Yao Yue",
+	article,
+} = Astro.props as Props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
-let optimizedImage;
-if (image) {
-	optimizedImage = await getImage({
-		src: image,
-		format: "webp",
-		quality: "high",
-		width: 320,
-		height: 320,
-	});
-}
+// Every page gets a social-preview image; pages without their own fall back
+// to the author's avatar so shares/cards are never blank.
+const optimizedImage = await getImage({
+	src: image ?? defaultImage,
+	format: "webp",
+	quality: "high",
+	width: 320,
+	height: 320,
+});
 
 function trimEndSlash(str: string) {
 	if (str[str.length - 1] === "/") {
@@ -37,7 +48,9 @@ function trimEndSlash(str: string) {
 }
 
 // put together the image URL
-const imageUrl = trimEndSlash(Astro.site?.toString() || "") + optimizedImage?.src;
+const imageUrl = trimEndSlash(Astro.site?.toString() || "") + optimizedImage.src;
+
+const imageAlt = `${author} — profile image`;
 ---
 
 <SEO
@@ -47,21 +60,42 @@ const imageUrl = trimEndSlash(Astro.site?.toString() || "") + optimizedImage?.sr
 	openGraph={{
 		basic: {
 			title: title,
-			type: "website",
+			type: article ? "article" : "website",
 			image: imageUrl,
 			url: canonicalUrl.toString(),
 		},
 		optional: {
 			description: description,
-			// siteName: title,
+			siteName: "Yao Yue",
+			locale: "en_US",
 		},
 		image: {
 			type: "image/webp",
-			width: optimizedImage?.attributes.width || "320",
-			height: optimizedImage?.attributes.height || "320",
-			alt: "profile image",
+			width: optimizedImage.attributes.width || "320",
+			height: optimizedImage.attributes.height || "320",
+			alt: imageAlt,
 		},
+		...(article
+			? {
+					article: {
+						publishedTime: article.publishedTime,
+						...(article.modifiedTime ? { modifiedTime: article.modifiedTime } : {}),
+						authors: [author],
+					},
+				}
+			: {}),
+	}}
+	twitter={{
+		card: "summary_large_image",
+		title: title,
+		description: description,
+		image: imageUrl,
+		imageAlt: imageAlt,
+	}}
+	extend={{
+		meta: [{ name: "author", content: author }],
 	}}
 	noindex={noindex}
 	nofollow={noindex}
+	surpressWarnings={true}
 />
