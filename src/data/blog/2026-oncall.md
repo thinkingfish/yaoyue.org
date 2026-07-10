@@ -1,8 +1,10 @@
 ---
 title: Being oncall taught me everything
+description: Lessons from 7.5 years on call for distributed caching at Twitter—why predictability beats raw speed, why tail latency matters most, and why operational excellence comes from design, not last-minute patching.
 pubDate: 2026-05-22
 draft: false
 ---
+
 Though I have never officially owned the title of DevOps or SRE, the majority of my engineering hours in the first few years of my career were spent on understanding and mitigating incidents. Without exageration, being oncall made me the engineer I am.
 
 I was oncall for distributed caching at Twitter for 7.5 years (2010-2017), including the 15 months or so when I managed the team, and the week that officially ended one day past the due date of my first-born. It was not just any service that I was responsible for—Cache had the highest throughput by far, measured by requests per second, of any services at Twitter. And as a load-bearing service, it was far from problem-free—by the time Dan Luu and I co-authored the [cache incident survey](https://danluu.com/cache-incidents/), we counted no fewer than a dozen high profile (tier 0 or tier 1, which generally meant prolonged site-wide degradation) incidents that were attributed fully or significantly to cache.
@@ -18,4 +20,3 @@ What was perhaps more important though, was what it taught me about working with
 And I miss those people: my teammates who were in the same trench, bouncing ideas and covering each other's blind spots; my first manager who told a clueless new grad that she was doing a good job and should keep growing; the ops engineers who offered tips that felt like black magic so I didn't have to spend half an hour learning 6 tools in the middle of an incident; owners of upstream services who diverted load to allow my service to ramp up instead of immediately falling over; kernel engineers who translated my handwavy questions into a clear explanation of kernel quirks. When everything fell into place and the machines were happily chirping out bytes again, we all celebrated solving yet another problem with a toast. Those were the good days.
 
 I would argue that one doesn't really understand how software works until they have watched it work, and inevitably fail, in production. And one doesn't really know how to create software until they have patched together someone else's broken pieces. I have no respect for any software engineer who somehow thinks they are too good for deploying, monitoring, or debugging the very software they wrote. Because being oncall is when things become real, and reality is always messy. But it will be worth it, especially when doing it with the right people.
-

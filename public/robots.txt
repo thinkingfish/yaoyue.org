@@ -1,1 +1,14 @@
-Sitemap: https://landingpad.cosmicthemes.com/sitemap-index.xml
+# robots.txt for https://yaoyue.org/
+#
+# This is a personal site meant to be discovered, read, and cited — by
+# search engines and by AI answer engines alike. We welcome well-behaved
+# crawlers, including AI training, search-indexing, and user-triggered
+# fetchers (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot,
+# Claude-User, PerplexityBot, Perplexity-User, Googlebot, Google-Extended,
+# Applebot, Amazonbot, CCBot, and friends). Default-allow already permits
+# them all; the rule below just makes that intent explicit.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://yaoyue.org/sitemap-index.xml

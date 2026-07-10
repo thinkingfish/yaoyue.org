@@ -1,5 +1,6 @@
 ---
 title: AI-induced layoff is (still) a leadership failure
+description: Citing AI adoption as the reason for layoffs masks the same leadership failure behind most job cuts—and, in the long run, hurts the companies wielding it.
 pubDate: 2026-05-30
 draft: false
 ---

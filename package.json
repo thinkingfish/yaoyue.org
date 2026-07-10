@@ -9,7 +9,8 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"format": "eslint . --fix && prettier -w \"**/*\" --ignore-unknown --cache",
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"check:seo": "astro build && node scripts/check-seo.mjs"
 	},
 	"dependencies": {
 		"@astrojs/rss": "^4.0.18",

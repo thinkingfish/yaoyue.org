@@ -1,8 +1,10 @@
 ---
 title: Slow down and sit with it
+description: When AI makes software creation nearly effortless, deliberately slowing down—immersing yourself in the problem space—is still how real understanding gets built.
 pubDate: 2026-06-17
 draft: false
 ---
+
 These days it is so easy to make rapid progress—websites in minutes, full apps in hours, whole distributed systems in days—that we software engineers begin to wonder what our job really is.
 
 It surely isn’t writing code anymore, 99% of the time. Is it reviewing code? That seems like a losing battle when we are throwing our slow cognitive machinery against machines that vomit out code day and night. Are we agent curators, shepherds, managers? Are we AI psychologists? Are we all product managers and user researchers in disguise?
