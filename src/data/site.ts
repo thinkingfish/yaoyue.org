@@ -11,7 +11,8 @@ export const SITE = {
 	// One-line, factual identity statement used for the Person entity.
 	description:
 		"Yao Yue is a San Francisco–based systems engineer and writer. She writes about systems, software, and the people who build them, drawing on years of work on distributed caching, performance engineering, and infrastructure at scale.",
-	jobTitle: "Software engineer",
+	// schema.org jobTitle accepts multiple values — wear as many hats as you like.
+	jobTitle: ["CEO & Co-founder", "Software engineer"],
 	// Topics Yao is known for — helps engines understand the entity's expertise.
 	knowsAbout: [
 		"Distributed systems",
