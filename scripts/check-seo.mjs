@@ -156,6 +156,35 @@ else {
 		fail("robots.txt: missing/incorrect Sitemap line");
 	if (/cosmicthemes|landingpad/i.test(robots))
 		fail("robots.txt: still references the template domain");
+	// Content Signals: declare AI-usage preferences (all three signals present).
+	const signal = robots.match(/^Content-Signal:\s*(.+)$/im);
+	if (!signal) fail("robots.txt: missing Content-Signal directive");
+	else {
+		for (const key of ["ai-train", "search", "ai-input"]) {
+			if (!new RegExp(`${key}=(yes|no)`).test(signal[1]))
+				fail(`robots.txt: Content-Signal missing "${key}=yes|no"`);
+		}
+	}
+}
+
+// --- Markdown for Agents ----------------------------------------------------
+// Every content page must have a pre-built .md twin (served at the same URL
+// via Accept: text/markdown negotiation in functions/_middleware.js).
+const expectedMd = [
+	"index.md",
+	"blog.md",
+	"talks.md",
+	...blogPosts.map((f) => f.replace(`${DIST}/`, "").replace("/index.html", ".md")),
+];
+for (const mdRel of expectedMd) {
+	const md = read(mdRel);
+	if (!md) fail(`markdown twin missing: /${mdRel}`);
+	else if (!md.startsWith("---")) fail(`/${mdRel}: missing YAML frontmatter`);
+}
+try {
+	readFileSync("functions/_middleware.js", "utf8");
+} catch {
+	fail("functions/_middleware.js missing — Markdown negotiation won't work");
 }
 
 // --- llms.txt ---------------------------------------------------------------

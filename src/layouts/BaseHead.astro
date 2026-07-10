@@ -3,6 +3,7 @@ import JsonLd from "@components/Seo/JsonLd.astro";
 import Seo from "@components/Seo/Seo.astro";
 import { ClientRouter } from "astro:transitions";
 
+import { markdownPathFor } from "@/lib/agent-markdown";
 import { websiteSchema } from "@/lib/structured-data";
 
 export interface Props {
@@ -34,6 +35,10 @@ const structuredData = [
 	websiteSchema(),
 	...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []),
 ];
+
+// Advertise the Markdown twin (served at the same URL via Accept negotiation,
+// and directly at this path) so agents can discover it.
+const markdownPath = markdownPathFor(Astro.url.pathname);
 ---
 
 <meta charset="utf-8" />
@@ -78,6 +83,7 @@ const structuredData = [
 <meta name="generator" content={Astro.generator} />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" title="Yao Yue" href="/rss.xml" />
+{markdownPath && <link rel="alternate" type="text/markdown" href={markdownPath} />}
 
 <Seo
 	title={title}

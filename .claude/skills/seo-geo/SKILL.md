@@ -17,18 +17,21 @@ official OpenAI/Anthropic crawler docs, schema.org, and the llms.txt spec.
 
 ## The plumbing (where things live)
 
-| Concern                              | File                                       | Notes                                                                         |
-| ------------------------------------ | ------------------------------------------ | ----------------------------------------------------------------------------- |
-| Site constants, stable entity `@id`s | `src/data/site.ts`                         | `SITE`, `PERSON_ID`, `WEBSITE_ID`, `personRef`                                |
-| JSON-LD builders                     | `src/lib/structured-data.ts`               | `websiteSchema`, `profilePageSchema`, `blogPostingSchema`, `breadcrumbSchema` |
-| JSON-LD renderer                     | `src/components/Seo/JsonLd.astro`          | escapes `<`, accepts one object or an array                                   |
-| Meta / OG / Twitter                  | `src/components/Seo/Seo.astro`             | Twitter cards, author, article dates, fallback image                          |
-| `<head>` wiring                      | `src/layouts/BaseHead.astro`               | emits site-wide `WebSite` + page `jsonLd`                                     |
-| Layout props                         | `src/layouts/BaseLayout.astro`             | pass `title`, `description`, `image?`, `author?`, `article?`, `jsonLd?`       |
-| AI/search crawler rules              | `public/robots.txt`                        | default-allow + correct `Sitemap:`                                            |
-| LLM site map                         | `src/pages/llms.txt.ts`                    | generated from content; stays in sync automatically                           |
-| XML sitemap                          | `@astrojs/sitemap` (in `astro.config.mjs`) | automatic                                                                     |
-| RSS feed                             | `src/pages/rss.xml.ts`                     | blog + talks                                                                  |
+| Concern                              | File                                                                         | Notes                                                                         |
+| ------------------------------------ | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Site constants, stable entity `@id`s | `src/data/site.ts`                                                           | `SITE`, `PERSON_ID`, `WEBSITE_ID`, `personRef`                                |
+| JSON-LD builders                     | `src/lib/structured-data.ts`                                                 | `websiteSchema`, `profilePageSchema`, `blogPostingSchema`, `breadcrumbSchema` |
+| JSON-LD renderer                     | `src/components/Seo/JsonLd.astro`                                            | escapes `<`, accepts one object or an array                                   |
+| Meta / OG / Twitter                  | `src/components/Seo/Seo.astro`                                               | Twitter cards, author, article dates, fallback image                          |
+| `<head>` wiring                      | `src/layouts/BaseHead.astro`                                                 | emits site-wide `WebSite` + page `jsonLd`                                     |
+| Layout props                         | `src/layouts/BaseLayout.astro`                                               | pass `title`, `description`, `image?`, `author?`, `article?`, `jsonLd?`       |
+| AI/search crawler rules              | `public/robots.txt`                                                          | default-allow + correct `Sitemap:` + `Content-Signal` usage prefs             |
+| LLM site map                         | `src/pages/llms.txt.ts`                                                      | generated from content; stays in sync automatically                           |
+| Markdown for agents (render)         | `src/lib/agent-markdown.ts`                                                  | builds `.md` from source; `markdownPathFor()` maps page URL → `.md`           |
+| Markdown twins (endpoints)           | `src/pages/index.md.ts`, `blog.md.ts`, `blog/[...slug].md.ts`, `talks.md.ts` | emit `.md` at build                                                           |
+| Markdown negotiation (runtime)       | `functions/_middleware.js`                                                   | serves `.md` at same URL on `Accept: text/markdown`                           |
+| XML sitemap                          | `@astrojs/sitemap` (in `astro.config.mjs`)                                   | automatic                                                                     |
+| RSS feed                             | `src/pages/rss.xml.ts`                                                       | blog + talks                                                                  |
 
 ## Non-negotiable invariants
 
@@ -46,8 +49,17 @@ official OpenAI/Anthropic crawler docs, schema.org, and the llms.txt spec.
 4. **Descriptions are answer-first and honest.** ~120–160 chars, lead with the
    direct point, no keyword stuffing (the GEO study found stuffing _hurts_).
    Never mark up facts that aren't visible on the page.
-5. **robots.txt** must keep the correct `Sitemap:` line and never regress to a
-   template domain.
+5. **robots.txt** must keep the correct `Sitemap:` line, the `Content-Signal`
+   directive (all three of `ai-train`/`search`/`ai-input`), and never regress
+   to a template domain. Current posture: citable, not for training
+   (`ai-train=no`, `search=yes`, `ai-input=yes`). Crawling stays allowed —
+   Content Signals is a _usage preference_, not an access block.
+6. **Every content page has a Markdown twin.** Agents that send
+   `Accept: text/markdown` get Markdown at the same URL (via
+   `functions/_middleware.js`), served from the pre-built `.md` files. New
+   page types need a matching `.md` endpoint or they silently fall back to
+   HTML. Keep `markdownPathFor()` identical in `src/lib/agent-markdown.ts` and
+   `functions/_middleware.js`.
 
 ## Playbooks
 
@@ -77,6 +89,11 @@ official OpenAI/Anthropic crawler docs, schema.org, and the llms.txt spec.
   SoftwareSourceCode/Project, a Book), add a builder to
   `src/lib/structured-data.ts` rather than inlining JSON-LD, and reference
   `personRef` for authorship.
+- Add a Markdown twin: an `.md` endpoint (see `src/pages/*.md.ts`) that a
+  `GET` returns as `text/markdown`, so `markdownPathFor(newPath)` resolves to
+  a real file. A `<link rel="alternate" type="text/markdown">` is emitted
+  automatically by `BaseHead`. Without the twin the page just serves HTML to
+  agents (graceful, but not ideal).
 
 ### Adding a social / authoritative profile
 
