@@ -6,7 +6,7 @@
 //   - Reuse a single stable Person @id everywhere so engines resolve one entity.
 //   - Prefer explicit dates, authorship, and `sameAs` links for disambiguation.
 
-import { PERSON_ID, personRef, SITE, WEBSITE_ID } from "@/data/site";
+import { ORG, PERSON_ID, personRef, SITE, WEBSITE_ID } from "@/data/site";
 
 type Json = Record<string, unknown>;
 
@@ -46,6 +46,12 @@ export function profilePageSchema(opts: {
 			jobTitle: SITE.jobTitle,
 			description: opts.description ?? SITE.description,
 			knowsAbout: SITE.knowsAbout,
+			worksFor: {
+				"@type": "Organization",
+				"@id": ORG.id,
+				name: ORG.name,
+				url: ORG.url,
+			},
 			...(opts.imageUrl ? { image: opts.imageUrl } : {}),
 			sameAs: opts.sameAs,
 		},

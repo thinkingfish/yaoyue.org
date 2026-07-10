@@ -23,6 +23,14 @@ export const SITE = {
 	],
 } as const;
 
+// The organization Yao co-founded / leads. Emitted as the Person's `worksFor`
+// so engines link the person to the company entity.
+export const ORG = {
+	url: "https://iop.systems",
+	name: "IOP Systems",
+	id: "https://iop.systems/#organization",
+} as const;
+
 // Stable entity identifiers (see note above).
 export const PERSON_ID = `${SITE.url}/#person`;
 export const WEBSITE_ID = `${SITE.url}/#website`;
