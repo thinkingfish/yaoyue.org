@@ -51,6 +51,7 @@ export function profilePageSchema(opts: {
 				"@id": ORG.id,
 				name: ORG.name,
 				url: ORG.url,
+				sameAs: ORG.sameAs,
 			},
 			...(opts.imageUrl ? { image: opts.imageUrl } : {}),
 			sameAs: opts.sameAs,

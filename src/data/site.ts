@@ -24,11 +24,14 @@ export const SITE = {
 } as const;
 
 // The organization Yao co-founded / leads. Emitted as the Person's `worksFor`
-// so engines link the person to the company entity.
+// so engines link the person to the company entity. `id` is the entity's
+// stable identifier; here it's the real, resolvable company page. `sameAs`
+// disambiguates the company the same way Person.sameAs does for Yao.
 export const ORG = {
-	url: "https://iop.systems",
+	url: "https://iop.systems/company/",
 	name: "IOP Systems",
-	id: "https://iop.systems/#organization",
+	id: "https://iop.systems/company/",
+	sameAs: ["https://www.linkedin.com/company/iop-systems/", "https://github.com/iopsystems/"],
 } as const;
 
 // Stable entity identifiers (see note above).
