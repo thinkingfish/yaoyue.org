@@ -8,6 +8,8 @@ class: text-center
 highlighter: shiki
 transition: slide-left
 mdc: true
+# site favicon; root-absolute is fine here (injected as a <link>, not a Vite import)
+favicon: /favicons/favicon.ico
 fonts:
   sans: IBM Plex Sans
   mono: IBM Plex Mono
@@ -280,7 +282,13 @@ It's probably no exaggeration to say agentic coding is a paradigm shift triggeri
 # Vibe coding ≠ Slop
 
 <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:2rem; margin-top:1.6rem;">
-  <div class="phase orange" style="flex:0 0 auto;">Analogy: Writing assembly</div>
+  <div>
+    <div class="phase orange">Analogy: Writing assembly</div>
+    <ul class="rlist">
+      <li>most people are unskilled in it</li>
+      <li>one can achieve good results at small scale nonetheless</li>
+    </ul>
+  </div>
   <Img src="assembly_code.png" alt="assembly code" style="max-height:7.5rem; max-width:48%; object-fit:contain; border:1px solid var(--border); border-radius:6px;" />
 </div>
 
@@ -314,7 +322,7 @@ There were various points in history where people were convinced the transformat
 <div class="bg-bands"><Img src="maug-top.jpg" class="top" alt="" /><Img src="maug-bottom.jpg" class="bottom" alt="" /></div>
 <div class="divider">
   <div class="kicker">Chapter Four</div>
-  <h1>Craft and<br />the joy of understanding</h1>
+  <h1>Know-how and<br />the joy of understanding</h1>
 </div>
 
 <!--
@@ -392,7 +400,7 @@ Understanding the nature of the problem? Unchanged but with assistance. Designin
 
 ---
 
-# Challenge 1: how do we learn without doing?
+# Challenge 1: how do I learn without doing?
 
 <div class="cols2" style="margin-top:1.4rem; max-width:100%;">
   <div v-click>
@@ -400,7 +408,7 @@ Understanding the nature of the problem? Unchanged but with assistance. Designin
     <ul class="rlist">
       <li>latent knowledge used to come from <em>doing</em></li>
       <li>the process lets us distill and retain</li>
-      <li>the junior dilemma: no struggle, no learning, no growth</li>
+      <li>the frictionless trap: no struggle, no learning, no growth</li>
     </ul>
   </div>
   <div v-click>
@@ -639,7 +647,7 @@ Third example: the runtime change from the reboot slide, measured the same way. 
 <div class="bg-bands"><Img src="maug-top.jpg" class="top" alt="" /><Img src="maug-bottom.jpg" class="bottom" alt="" /></div>
 <div class="divider">
   <div class="kicker">Chapter Five</div>
-  <h1>Changing how we build</h1>
+  <h1>Changing how <em>we</em> build</h1>
 </div>
 
 <!--

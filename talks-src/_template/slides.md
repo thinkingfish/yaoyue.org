@@ -4,6 +4,8 @@ title: Your Talk Title
 # Default (history) routing -> clean URLs like /talks/<name>/3. Deep-link/refresh
 # works because scripts/build-talks.sh writes an SPA fallback to public/_redirects.
 mdc: true
+# site favicon; root-absolute is fine here (injected as a <link>, not a Vite import)
+favicon: /favicons/favicon.ico
 class: text-center
 ---
 
