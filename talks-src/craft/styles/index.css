@@ -2,8 +2,7 @@
    Pelikan / Flexoki design system  —  borrowed from pelikan.io
    paper #FFFCF0 · ink #100F0F · orange #DA702C · blue #4385BE
    IBM Plex Sans + IBM Plex Mono · bordered cards · mono badges
-   (global stylesheet — applies to every slide; shared by the caching
-   and craft decks — deck-specific one-offs belong in a slide <style>)
+   (global stylesheet — applies to every slide)
 =================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 
@@ -196,6 +195,31 @@ html, body, #app, .slidev-page { background-color: var(--bg); }
   color: var(--ink);
 }
 
+/* ---- pyrs: before/now pyramids of the four steps. Level width = depth
+   (1:2:3:4). "now" masks the outer part of each block with translucent
+   paper so the visible cores (10:7.5:5:2.5 units = 40:30:20:10) form a reverse
+   pyramid — the masked part is still there, just done by the models.
+   Ordered steps → one-hue sequential ramp; identity by direct label. ---- */
+.pyrs { display: flex; gap: 1.6rem; margin-top: 0.6rem; }
+.pyr { flex: 1; min-width: 0; }
+.pyr .cap { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); text-align: center; margin-bottom: 0.45rem; }
+.pyr .lvl { position: relative; height: 2.1rem; margin-top: 3px; }
+.pyr.left .lvl  { padding-left: 3.2rem; }
+.pyr.right .lvl { padding-right: 3.2rem; }
+.pyrs .names { flex: 0 0 auto; }
+.pyrs .names .lvl { height: 2.1rem; margin-top: 3px; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--ink-2); }
+.pyr .blk { position: relative; width: var(--w); height: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+.pyr .lvl:first-of-type .blk { border-radius: 4px 4px 0 0; }
+.pyr .lvl:last-of-type .blk  { border-radius: 0 0 4px 4px; }
+.pyr .mask { position: absolute; top: 0; bottom: 0; width: calc((100% - var(--v)) / 2); background: var(--bg); opacity: 0.82; }
+.pyr .mask.l { left: 0; }  .pyr .mask.r { right: 0; }
+.pyr .pct { position: absolute; top: 50%; transform: translateY(-50%); font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; font-weight: 600; color: var(--ink-2); }
+.pyr.left .pct { left: 0; }  .pyr.right .pct { right: 0; }
+.pyr .s1 { background: #CECDC3; color: var(--ink); }
+.pyr .s2 { background: #878580; color: var(--bg); }
+.pyr .s3 { background: #575653; color: var(--bg); }
+.pyr .s4 { background: #282726; color: var(--bg); }
+
 /* ---- flow: boxed nodes joined by mono arrows ---- */
 .flow { display: flex; align-items: center; justify-content: center; gap: 1rem; }
 .flow .node {
@@ -225,6 +249,28 @@ html, body, #app, .slidev-page { background-color: var(--bg); }
 .figure .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
 .figure .legend i { display: inline-block; width: 1rem; height: 2.5px; border-radius: 2px; }
 
+/* ---- themes-tbl: the "Themes (Part IX), grouped" table from the principles map ---- */
+.themes-tbl { border-collapse: collapse; width: 92%; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.themes-tbl th { text-align: left; font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.themes-tbl th, .themes-tbl td { border-bottom: 1px solid var(--border); padding: 0.32rem 0.9rem 0.32rem 0; vertical-align: top; color: var(--ink); }
+.themes-tbl .pn { font-family: 'IBM Plex Mono', monospace; font-size: 0.74rem; white-space: nowrap; color: var(--ink-2); }
+.themes-tbl .muted { color: var(--ink-2); font-size: 0.84rem; }
+.themes-tbl .chip { display: inline-block; min-width: 1.05rem; padding: 0 0.2rem; text-align: center; border: 1px solid #999; border-radius: 3px; color: #222; font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; font-weight: 700; line-height: 1.05rem; }
+
+/* ---- reboot5: five compact cards in one row + a stage below that shows one
+   diagram per click (v-click ranges keep card highlight and diagram in sync) ---- */
+.cards.reboot5 { grid-template-columns: repeat(5, 1fr); gap: 0.6rem; margin-top: 1.2rem; }
+.reboot5 > .card { cursor: pointer; position: relative; border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.7rem 0.75rem; min-width: 0; }
+.reboot5 .label { font-size: 0.7rem; }
+.reboot5 .name { font-size: 0.98rem; margin-top: 0.15rem; }
+.reboot5 .secondary { font-size: 0.72rem; line-height: 1.35; margin-top: 0.2rem; }
+.reboot5 .active { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; border-radius: 0 0 8px 8px; background: var(--orange); }
+.reboot-stage { position: relative; height: 58%; margin-top: 1.8rem; }
+.reboot-stage .stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.reboot-stage .stage img { height: 100%; width: auto; max-width: 100%; object-fit: contain; }
+.reboot-stage .placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--border); border-radius: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--muted); }
+.reboot5 > .card:hover { border-color: var(--orange); }
+
 /* ---- extracted from repeated inline styles ---- */
 .slidev-layout a.inherit { color: inherit; }
 .slidev-layout .orange { color: var(--orange); }
@@ -242,6 +288,10 @@ html, body, #app, .slidev-page { background-color: var(--bg); }
 .chart text.axis { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; }
 .chart text.dl   { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 12.5px; font-weight: 500; }
 .chart .mono     { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+.reboot-stage .stage .chart .legend { display: flex; margin-top: 0.4rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; color: var(--ink-2); }
+.reboot-stage .stage .chart .legend { gap: 1.2rem; }
+.reboot-stage .stage .chart .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.reboot-stage .stage .chart .legend i { display: inline-block; width: 1rem; height: 2.5px; border-radius: 2px; }
 
 /* ---- punchline: one centered line that lands the slide, revealed last ---- */
 /* anchored to the slide's bottom edge (layout padding is 2.4rem 3rem), independent of the content above */

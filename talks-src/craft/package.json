@@ -1,0 +1,15 @@
+{
+  "name": "talk-craft",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build --base /talks/craft/ --out ../../public/talks/craft",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "52.15.2",
+    "@slidev/theme-default": "latest",
+    "vue": "^3.4.29"
+  }
+}
