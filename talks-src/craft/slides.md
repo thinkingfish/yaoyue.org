@@ -14,6 +14,7 @@ fonts:
   weights: '300,400,500,600,700'
 ---
 
+<div class="bg-fade"><Img src="coral_polyps_closeup.jpg" alt="" /></div>
 <div class="title-slide">
   <h1>In Craft We Trust</h1>
   <div class="phase" style="margin-top:1.6rem; font-weight:400;">Shipping critical services as we stop writing code</div>
@@ -39,6 +40,7 @@ Something is lost. But something is found. That's the shape of this whole talk.
 
 ---
 
+<div class="bg-bands"><Img src="maug-top.jpg" class="top" alt="" /><Img src="maug-bottom.jpg" class="bottom" alt="" /></div>
 <div class="divider">
   <div class="kicker">Chapter One</div>
   <h1>Are we losing programming?</h1>
@@ -56,6 +58,7 @@ I started coding seriously at 12 and dedicated much of my teenage years to progr
 
 ---
 
+<div class="bg-bands"><Img src="maug-top.jpg" class="top" alt="" /><Img src="maug-bottom.jpg" class="bottom" alt="" /></div>
 <div class="divider">
   <div class="kicker">Chapter Two</div>
   <h1>What's happening to<br /><em>software engineering</em>?</h1>
@@ -262,6 +265,7 @@ Fast forward to last December — like half of our industry, I decided to take a
 
 ---
 
+<div class="bg-bands"><Img src="maug-top.jpg" class="top" alt="" /><Img src="maug-bottom.jpg" class="bottom" alt="" /></div>
 <div class="divider">
   <div class="kicker">Chapter Three</div>
   <h1>What separates proper<br />engineering from slop?</h1>
@@ -307,6 +311,7 @@ There were various points in history where people were convinced the transformat
 
 ---
 
+<div class="bg-bands"><Img src="maug-top.jpg" class="top" alt="" /><Img src="maug-bottom.jpg" class="bottom" alt="" /></div>
 <div class="divider">
   <div class="kicker">Chapter Four</div>
   <h1>Craft and<br />the joy of understanding</h1>
@@ -352,7 +357,7 @@ How exactly do we behave as a professional?
 
 <div v-click>
   <div class="eyebrow section">Key takeaway</div>
-  <div class="takeaway">Narrower and more common problems get more lift from LLMs than broader or bespoke ones. Remaining effort <span class="accent">moves up</span> the task pyramid.</div>
+  <div class="takeaway">Narrower and more common problems get more lift from LLMs than broader or bespoke ones. Remaining effort <span class="accent">moves up</span> the effort pyramid.</div>
 
 </div>
 
@@ -631,6 +636,7 @@ Third example: the runtime change from the reboot slide, measured the same way. 
 
 ---
 
+<div class="bg-bands"><Img src="maug-top.jpg" class="top" alt="" /><Img src="maug-bottom.jpg" class="bottom" alt="" /></div>
 <div class="divider">
   <div class="kicker">Chapter Five</div>
   <h1>Changing how we build</h1>
@@ -658,6 +664,7 @@ The best model I can come up with for what software engineering is becoming is a
 <path d="M377.6,237.1 A135,135 0 0 1 451.6,54.0" fill="none" stroke="#6B3A1E" stroke-width="36"/>
 <polygon points="453.5,80.0 443.9,29.1 496.4,45.5" fill="#6B3A1E"/>
 <path id="lp2" d="M377.6,237.1 A135,135 0 0 1 451.6,54.0" fill="none"/><text class="verb" fill="#FFFCF0" dy="7"><textPath href="#lp2" startOffset="50%" text-anchor="middle">Use</textPath></text>
+<g class="watermark" transform="translate(425 114) scale(1.5)" fill="#E6E4D9" opacity="0.6"><polygon points="50,0 100,22 0,22"/><rect x="2" y="24" width="96" height="8"/><rect x="6" y="36" width="9" height="38" rx="1"/><rect x="4.5" y="34" width="12" height="3"/><rect x="26" y="36" width="9" height="38" rx="1"/><rect x="24.5" y="34" width="12" height="3"/><rect x="45.5" y="36" width="9" height="38" rx="1"/><rect x="44.0" y="34" width="12" height="3"/><rect x="65" y="36" width="9" height="38" rx="1"/><rect x="63.5" y="34" width="12" height="3"/><rect x="85" y="36" width="9" height="38" rx="1"/><rect x="83.5" y="34" width="12" height="3"/><rect x="3" y="76" width="94" height="6"/><rect x="0" y="84" width="100" height="6"/></g>
 <text x="500" y="172" text-anchor="middle" class="hub" fill="#100F0F">INSTITUTIONAL</text>
 <text x="500" y="198" text-anchor="middle" class="hub" fill="#100F0F">KNOWLEDGE</text>
 <text x="265" y="329" text-anchor="middle" class="lbl" fill="#6F6E69">latent</text>
@@ -684,7 +691,7 @@ The best model I have for what software engineering is becoming: a learning syst
 
 
 <div class="cards c3 beliefs">
-  <div class="card" v-click>Put higher value on methodology</div>
+  <div class="card" v-click>Place higher value on methodology</div>
   <div class="card" v-click>Set direction and rely on automated conversion</div>
   <div class="card" v-click>Develop a concrete sense of "good", a.k.a. "taste"</div>
 </div>
@@ -761,10 +768,20 @@ And the loop closes: the how gets captured as skills, the skills get used, revie
   </div>
 </div>
 
-<div class="punchline" v-click>Let's have some fun delivering <em class="accent">provably good software</em>.</div>
 
 <!--
 There is undoubtedly serious muscle atrophy in the more mechanical, more predictable parts of software engineering. Writing source code by hand is going the way of handcrafted woodwork — a hobby. But we as professionals have little reason or time to mourn that loss — we must broaden our horizons and raise the bar of software while embracing the full potential of AI/ML. Structured curiosity is my chosen approach, and well-defined evaluation my guardrail. Perfecting our craft — the whys and hows — is going to be the whole game. Let's have some fun delivering seriously good software.
+-->
+
+---
+
+<div class="bg-full"><Img src="cs_0322N_Coral.jpg" alt="" /></div>
+<div class="divider photo">
+  <div class="q">Let's have some fun building <em class="accent">provably good software</em>.</div>
+</div>
+
+<!--
+Let's have some fun building provably good software.
 -->
 
 ---
@@ -793,3 +810,13 @@ Software engineering is a social endeavor. On one hand it's now much harder to t
 
 The other practical challenge is left as an open question: how to rein in the nondeterminism and variance inherent in agentic coding.
 -->
+
+---
+
+# Photo credits
+
+<ul class="rlist" style="margin-top:2rem;">
+  <li><strong>Coral polyps</strong> (title slide) — NOAA, public domain; cropped and faded.</li>
+  <li><strong>Coral species of Maug Islands</strong> montage (chapter dividers) — NOAA, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Coral_species_of_Maug_Islands_montage_2022.png" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>; split and faded.</li>
+  <li><strong>Coral</strong> (closing slide) — Mikaela Nordborg / Australian Institute of Marine Science. Based on Australian Institute of Marine Science material, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>.</li>
+</ul>

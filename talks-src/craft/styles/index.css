@@ -304,3 +304,28 @@ html, body, #app, .slidev-page { background-color: var(--bg); }
 .chart text.lbl { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 19px; font-weight: 600; }
 .chart text.sub { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15.5px; }
 .slidev-layout ul.rlist.big li { font-size: 1.35rem; margin-top: 0.3rem; }
+
+/* ---- bg-fade: full-slide background image, clear in the center (where the text is) and
+   fading in toward the edges;
+   drop <div class="bg-fade"><Img src="…" alt="" /></div> as the first child of a slide ---- */
+.bg-fade { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.bg-fade img {
+  width: 100%; height: 100%; object-fit: cover; opacity: 0.32;
+  -webkit-mask-image: radial-gradient(ellipse 58% 60% at 50% 50%, transparent 0%, transparent 38%, rgba(0,0,0,.7) 75%, #000 100%);
+          mask-image: radial-gradient(ellipse 58% 60% at 50% 50%, transparent 0%, transparent 38%, rgba(0,0,0,.7) 75%, #000 100%);
+}
+.title-slide, .divider { position: relative; z-index: 1; }
+
+/* ---- bg-bands: a wide image split in two, one half hugging the top edge and one the
+   bottom, each fading toward the middle of the slide (chapter dividers) ---- */
+.bg-bands { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.bg-bands img { position: absolute; left: 0; width: 100%; height: 21%; object-fit: cover; opacity: 0.6; }
+.bg-bands img.top    { top: 0;    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 12%, rgba(0,0,0,.55) 50%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 12%, rgba(0,0,0,.55) 50%, transparent 100%); }
+.bg-bands img.bottom { bottom: 0; -webkit-mask-image: linear-gradient(to top,    #000 0%, #000 12%, rgba(0,0,0,.55) 50%, transparent 100%); mask-image: linear-gradient(to top,    #000 0%, #000 12%, rgba(0,0,0,.55) 50%, transparent 100%); }
+
+/* ---- bg-full: full-bleed photo with a darkening wash, for a one-line closing slide ---- */
+.bg-full { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.bg-full img { width: 100%; height: 100%; object-fit: cover; }
+.bg-full::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 58% 48% at 50% 50%, rgba(16,15,15,.62) 0%, rgba(16,15,15,.35) 55%, transparent 100%), linear-gradient(to bottom, rgba(16,15,15,.2), rgba(16,15,15,.45)); }
+.divider.photo .q { color: var(--bg); font-style: normal; font-size: 2.3rem; max-width: 26ch; text-shadow: 0 2px 14px rgba(0,0,0,.55); }
+.divider.photo .q .accent { font-style: italic; }
