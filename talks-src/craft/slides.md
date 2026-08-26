@@ -574,6 +574,129 @@ Second example, same loop. Declare the workload — pure reads or pure writes, u
 ---
 
 <div class="figure">
+  <div style="display:flex; gap:1.2rem; width:96%;">
+    <div class="chart" style="flex:1;">
+<svg viewBox="0 0 470 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aggregate Mops/s against core count, 50% writes, uniform keys, six architectures">
+<line x1="40" x2="352" y1="290.0" y2="290.0" stroke="#E6E4D9" stroke-width="1"/><text x="32" y="294.0" text-anchor="end" class="tick" fill="#878580">0</text>
+<line x1="40" x2="352" y1="198.0" y2="198.0" stroke="#E6E4D9" stroke-width="1"/><text x="32" y="202.0" text-anchor="end" class="tick" fill="#878580">2</text>
+<line x1="40" x2="352" y1="106.0" y2="106.0" stroke="#E6E4D9" stroke-width="1"/><text x="32" y="110.0" text-anchor="end" class="tick" fill="#878580">4</text>
+<line x1="40" x2="352" y1="14.0" y2="14.0" stroke="#E6E4D9" stroke-width="1"/><text x="32" y="18.0" text-anchor="end" class="tick" fill="#878580">6</text>
+<text x="40.0" y="306" text-anchor="middle" class="tick" fill="#878580">1</text>
+<text x="84.6" y="306" text-anchor="middle" class="tick" fill="#878580">2</text>
+<text x="173.7" y="306" text-anchor="middle" class="tick" fill="#878580">4</text>
+<text x="262.9" y="306" text-anchor="middle" class="tick" fill="#878580">6</text>
+<text x="352.0" y="306" text-anchor="middle" class="tick" fill="#878580">8</text>
+<text x="196" y="324" text-anchor="middle" class="axis" fill="#878580">CORES · UNIFORM KEYS</text>
+<text transform="translate(12 152) rotate(-90)" text-anchor="middle" class="axis" fill="#878580">MOPS/S</text>
+<path d="M40.0,223.6 L84.6,211.5 L173.7,203.4 L262.9,203.0 L352.0,214.1" fill="none" stroke="#4385BE" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="40.0" cy="223.6" r="3.2" fill="#4385BE" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="84.6" cy="211.5" r="3.2" fill="#4385BE" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="173.7" cy="203.4" r="3.2" fill="#4385BE" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="262.9" cy="203.0" r="3.2" fill="#4385BE" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="352.0" cy="214.1" r="3.2" fill="#4385BE" stroke="#FFFCF0" stroke-width="1.5"/>
+<path d="M40.0,223.4 L84.6,208.6 L173.7,199.9 L262.9,201.8 L352.0,202.8" fill="none" stroke="#DA702C" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="40.0" cy="223.4" r="3.2" fill="#DA702C" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="84.6" cy="208.6" r="3.2" fill="#DA702C" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="173.7" cy="199.9" r="3.2" fill="#DA702C" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="262.9" cy="201.8" r="3.2" fill="#DA702C" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="352.0" cy="202.8" r="3.2" fill="#DA702C" stroke="#FFFCF0" stroke-width="1.5"/>
+<path d="M84.6,242.5 L173.7,211.9 L262.9,194.3 L352.0,205.7" fill="none" stroke="#129C8F" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="84.6" cy="242.5" r="3.2" fill="#129C8F" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="173.7" cy="211.9" r="3.2" fill="#129C8F" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="262.9" cy="194.3" r="3.2" fill="#129C8F" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="352.0" cy="205.7" r="3.2" fill="#129C8F" stroke="#FFFCF0" stroke-width="1.5"/>
+<path d="M40.0,220.6 L84.6,197.0 L173.7,174.9 L262.9,166.7 L352.0,164.8" fill="none" stroke="#8B7EC8" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="40.0" cy="220.6" r="3.2" fill="#8B7EC8" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="84.6" cy="197.0" r="3.2" fill="#8B7EC8" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="173.7" cy="174.9" r="3.2" fill="#8B7EC8" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="262.9" cy="166.7" r="3.2" fill="#8B7EC8" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="352.0" cy="164.8" r="3.2" fill="#8B7EC8" stroke="#FFFCF0" stroke-width="1.5"/>
+<path d="M84.6,224.8 L173.7,194.4 L262.9,173.6 L352.0,160.0" fill="none" stroke="#879A39" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="84.6" cy="224.8" r="3.2" fill="#879A39" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="173.7" cy="194.4" r="3.2" fill="#879A39" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="262.9" cy="173.6" r="3.2" fill="#879A39" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="352.0" cy="160.0" r="3.2" fill="#879A39" stroke="#FFFCF0" stroke-width="1.5"/>
+<path d="M40.0,224.2 L84.6,175.2 L173.7,110.0 L262.9,64.3 L352.0,36.7" fill="none" stroke="#CE5D97" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="40.0" cy="224.2" r="3.2" fill="#CE5D97" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="84.6" cy="175.2" r="3.2" fill="#CE5D97" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="173.7" cy="110.0" r="3.2" fill="#CE5D97" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="262.9" cy="64.3" r="3.2" fill="#CE5D97" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="352.0" cy="36.7" r="3.2" fill="#CE5D97" stroke="#FFFCF0" stroke-width="1.5"/>
+<text x="361.0" y="40.7" class="dl" style="font-size:10.5px" fill="#100F0F">sharded <tspan class="mono" fill="#6F6E69">5.51</tspan></text>
+<text x="361.0" y="164.0" class="dl" style="font-size:10.5px" fill="#100F0F">deleg · batch 16 <tspan class="mono" fill="#6F6E69">2.83</tspan></text>
+<text x="361.0" y="176.0" class="dl" style="font-size:10.5px" fill="#100F0F">partitioned <tspan class="mono" fill="#6F6E69">2.72</tspan></text>
+<text x="361.0" y="206.8" class="dl" style="font-size:10.5px" fill="#100F0F">striped <tspan class="mono" fill="#6F6E69">1.90</tspan></text>
+<text x="361.0" y="218.8" class="dl" style="font-size:10.5px" fill="#100F0F">deleg · per-op <tspan class="mono" fill="#6F6E69">1.83</tspan></text>
+<text x="361.0" y="230.8" class="dl" style="font-size:10.5px" fill="#100F0F">shared <tspan class="mono" fill="#6F6E69">1.65</tspan></text>
+</svg>
+    </div>
+    <div class="chart" style="flex:1;">
+<svg viewBox="0 0 470 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aggregate Mops/s against core count, 50% writes, zipf 0.99 keys, six architectures">
+<line x1="40" x2="352" y1="290.0" y2="290.0" stroke="#E6E4D9" stroke-width="1"/><text x="32" y="294.0" text-anchor="end" class="tick" fill="#878580">0</text>
+<line x1="40" x2="352" y1="198.0" y2="198.0" stroke="#E6E4D9" stroke-width="1"/><text x="32" y="202.0" text-anchor="end" class="tick" fill="#878580">2</text>
+<line x1="40" x2="352" y1="106.0" y2="106.0" stroke="#E6E4D9" stroke-width="1"/><text x="32" y="110.0" text-anchor="end" class="tick" fill="#878580">4</text>
+<line x1="40" x2="352" y1="14.0" y2="14.0" stroke="#E6E4D9" stroke-width="1"/><text x="32" y="18.0" text-anchor="end" class="tick" fill="#878580">6</text>
+<text x="40.0" y="306" text-anchor="middle" class="tick" fill="#878580">1</text>
+<text x="84.6" y="306" text-anchor="middle" class="tick" fill="#878580">2</text>
+<text x="173.7" y="306" text-anchor="middle" class="tick" fill="#878580">4</text>
+<text x="262.9" y="306" text-anchor="middle" class="tick" fill="#878580">6</text>
+<text x="352.0" y="306" text-anchor="middle" class="tick" fill="#878580">8</text>
+<text x="196" y="324" text-anchor="middle" class="axis" fill="#878580">CORES · ZIPF 0.99 KEYS</text>
+<text transform="translate(12 152) rotate(-90)" text-anchor="middle" class="axis" fill="#878580">MOPS/S</text>
+<path d="M40.0,232.9 L84.6,212.2 L173.7,197.3 L262.9,197.0 L352.0,204.9" fill="none" stroke="#4385BE" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="40.0" cy="232.9" r="3.2" fill="#4385BE" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="84.6" cy="212.2" r="3.2" fill="#4385BE" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="173.7" cy="197.3" r="3.2" fill="#4385BE" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="262.9" cy="197.0" r="3.2" fill="#4385BE" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="352.0" cy="204.9" r="3.2" fill="#4385BE" stroke="#FFFCF0" stroke-width="1.5"/>
+<path d="M40.0,232.4 L84.6,210.5 L173.7,186.4 L262.9,180.3 L352.0,177.4" fill="none" stroke="#DA702C" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="40.0" cy="232.4" r="3.2" fill="#DA702C" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="84.6" cy="210.5" r="3.2" fill="#DA702C" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="173.7" cy="186.4" r="3.2" fill="#DA702C" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="262.9" cy="180.3" r="3.2" fill="#DA702C" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="352.0" cy="177.4" r="3.2" fill="#DA702C" stroke="#FFFCF0" stroke-width="1.5"/>
+<path d="M84.6,229.8 L173.7,194.4 L262.9,172.7 L352.0,182.6" fill="none" stroke="#129C8F" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="84.6" cy="229.8" r="3.2" fill="#129C8F" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="173.7" cy="194.4" r="3.2" fill="#129C8F" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="262.9" cy="172.7" r="3.2" fill="#129C8F" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="352.0" cy="182.6" r="3.2" fill="#129C8F" stroke="#FFFCF0" stroke-width="1.5"/>
+<path d="M40.0,229.5 L84.6,196.6 L173.7,154.9 L262.9,135.9 L352.0,126.8" fill="none" stroke="#8B7EC8" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="40.0" cy="229.5" r="3.2" fill="#8B7EC8" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="84.6" cy="196.6" r="3.2" fill="#8B7EC8" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="173.7" cy="154.9" r="3.2" fill="#8B7EC8" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="262.9" cy="135.9" r="3.2" fill="#8B7EC8" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="352.0" cy="126.8" r="3.2" fill="#8B7EC8" stroke="#FFFCF0" stroke-width="1.5"/>
+<path d="M84.6,206.6 L173.7,172.0 L262.9,147.3 L352.0,133.2" fill="none" stroke="#879A39" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="84.6" cy="206.6" r="3.2" fill="#879A39" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="173.7" cy="172.0" r="3.2" fill="#879A39" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="262.9" cy="147.3" r="3.2" fill="#879A39" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="352.0" cy="133.2" r="3.2" fill="#879A39" stroke="#FFFCF0" stroke-width="1.5"/>
+<path d="M40.0,232.2 L84.6,184.4 L173.7,110.6 L262.9,61.6 L352.0,30.8" fill="none" stroke="#CE5D97" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="40.0" cy="232.2" r="3.2" fill="#CE5D97" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="84.6" cy="184.4" r="3.2" fill="#CE5D97" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="173.7" cy="110.6" r="3.2" fill="#CE5D97" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="262.9" cy="61.6" r="3.2" fill="#CE5D97" stroke="#FFFCF0" stroke-width="1.5"/>
+<circle cx="352.0" cy="30.8" r="3.2" fill="#CE5D97" stroke="#FFFCF0" stroke-width="1.5"/>
+<text x="361.0" y="34.8" class="dl" style="font-size:10.5px" fill="#100F0F">sharded <tspan class="mono" fill="#6F6E69">5.63</tspan></text>
+<text x="361.0" y="130.8" class="dl" style="font-size:10.5px" fill="#100F0F">partitioned <tspan class="mono" fill="#6F6E69">3.55</tspan></text>
+<text x="361.0" y="142.8" class="dl" style="font-size:10.5px" fill="#100F0F">deleg · batch 16 <tspan class="mono" fill="#6F6E69">3.41</tspan></text>
+<text x="361.0" y="181.4" class="dl" style="font-size:10.5px" fill="#100F0F">striped <tspan class="mono" fill="#6F6E69">2.45</tspan></text>
+<text x="361.0" y="193.4" class="dl" style="font-size:10.5px" fill="#100F0F">deleg · per-op <tspan class="mono" fill="#6F6E69">2.33</tspan></text>
+<text x="361.0" y="208.9" class="dl" style="font-size:10.5px" fill="#100F0F">shared <tspan class="mono" fill="#6F6E69">1.85</tspan></text>
+</svg>
+    </div>
+  </div>
+  <div class="legend"><span><i style="background:#4385BE"></i>shared engine</span><span><i style="background:#DA702C"></i>striped tails</span><span><i style="background:#129C8F"></i>delegated, per-op</span><span><i style="background:#8B7EC8"></i>partitioned P=16</span><span><i style="background:#879A39"></i>delegated, batch 16</span><span><i style="background:#CE5D97"></i>sharded bound</span><span class="dim">50% writes · median of 3 runs</span></div>
+  <div class="caption"><a href="https://claude.ai/code/artifact/5c9e0e10-1f58-4961-8202-2e67de2c4685" target="_blank" rel="noopener noreferrer" class="inherit">designs to scale write better</a></div>
+</div>
+
+<!--
+The shapes matter more than the endpoints. Only three curves still climb at eight cores — sharded, partitioned, and batched delegation. The shared engine turns over after six, the per-op handoff after six as well, and striped tails go flat under uniform keys. An architecture that is merely higher at eight cores is worth less than one still rising.
+-->
+
+---
+
+<div class="figure">
   <div class="chart" style="width:84%;">
 <svg viewBox="0 0 1000 392" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Closed-loop throughput by scenario, io_uring vs Mio backends">
 <line x1="196.0" y1="6" x2="196.0" y2="366" stroke="#E6E4D9" stroke-width="1"/>
@@ -729,7 +852,10 @@ Yes, the code is auto-generated, but how it is done is the whole game now. And t
 
 <div class="figure">
   <table class="themes-tbl">
-    <tr><th></th><th>Theme</th><th>Cites</th><th>Group (synthesis)</th></tr>
+    <thead>
+      <tr><th></th><th>Theme</th><th>Cites</th><th>Group (synthesis)</th></tr>
+    </thead>
+    <tbody>
     <tr><td><span class="chip" style="background:#B3CDE3">P</span></td><td>Predictability is the actual goal</td><td class="pn">P1, P11, P13, P17, P18</td><td class="muted">the goal: knowability</td></tr>
     <tr><td><span class="chip" style="background:#CCEBC5">S</span></td><td>Plane separation, everywhere</td><td class="pn">P1, P11, P13, P18</td><td class="muted">the design strategy: placement</td></tr>
     <tr><td><span class="chip" style="background:#DECBE4">B</span></td><td>Bind early; run fixed</td><td class="pn">P17, P22</td><td class="muted">the design strategy: placement</td></tr>
@@ -738,6 +864,7 @@ Yes, the code is auto-generated, but how it is done is the whole game now. And t
     <tr><td><span class="chip" style="background:#FDDAEC">D</span></td><td>Degrade loudly, through a channel that still works</td><td class="pn">P9, P10, P29, P30</td><td class="muted">the operating strategy: explicit loops</td></tr>
     <tr><td><span class="chip" style="background:#FFFFCC">L</span></td><td>Nested control loops, with buffers sized to the loop</td><td class="pn">P5, P8, P9, P18, P19, P34, P36, P41</td><td class="muted">the operating strategy: explicit loops</td></tr>
     <tr><td><span class="chip" style="background:#E5D8BD">N</span></td><td>Nothing is sacred: when reality changes, design follows</td><td class="pn">P17, P24, P25, P30</td><td class="muted">the operating strategy: explicit loops</td></tr>
+    </tbody>
   </table>
   <div class="caption"><a href="https://claude.ai/code/artifact/93a56295-7ec9-4a33-b574-6c30ac6bd7a2" target="_blank" rel="noopener noreferrer" class="inherit">design principles of Pelikan</a></div>
 </div>
