@@ -291,7 +291,7 @@ It's probably no exaggeration to say agentic coding is a paradigm shift triggeri
     <div class="phase orange">Analogy: Writing assembly</div>
     <ul class="rlist">
       <li>most people are unskilled in it</li>
-      <li>one can achieve good results at small scale nonetheless</li>
+      <li>one can achieve good results nonetheless</li>
     </ul>
   </div>
   <Img src="assembly_code.png" alt="assembly code" style="max-height:7.5rem; max-width:48%; object-fit:contain; border:1px solid var(--border); border-radius:6px;" />
