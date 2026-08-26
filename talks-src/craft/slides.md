@@ -498,7 +498,7 @@ Define KPIs, SLOs, desirable properties. Declare workload characteristics. Measu
 
 <div class="figure">
   <Img src="challenge2-example.png" alt="Per-file in-memory footprint: SparseHistogram vs Histogram, measured on demo, cachecannon and vllm traces — 80.7% savings overall" />
-  <div class="caption">Measuring memory savings with cumulative read-only histograms</div>
+  <div class="caption"><a href="https://github.com/iopsystems/histogram" target="_blank" rel="noopener noreferrer" class="inherit">Measuring memory savings with sparse cumulative histograms</a></div>
 </div>
 
 <!--
