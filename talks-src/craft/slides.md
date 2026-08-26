@@ -153,12 +153,17 @@ The difference between users and creators is that users largely care about what 
   </ul>
 </div>
 
-<div v-click>
-  <div class="eyebrow" style="margin-top:2.4rem">Key takeaway</div>
-  <div class="takeaway">Using LLMs to write "serious software" is definitely <span class="accent">feasible</span> — but it is not <span class="accent">automatic</span>.</div>
+<div class="strip" v-click>
+  <figure><Img src="grow-a-cache-v0.svg" alt="grow-a-cache v0 architecture" /><figcaption>v0</figcaption></figure>
+  <figure><Img src="grow-a-cache-v1.svg" alt="grow-a-cache v1 architecture" /><figcaption>v1</figcaption></figure>
+  <figure><Img src="grow-a-cache-v2.svg" alt="grow-a-cache v2 architecture" /><figcaption>v2</figcaption></figure>
+  <figure><Img src="grow-a-cache-v3.svg" alt="grow-a-cache v3 architecture" /><figcaption>v3</figcaption></figure>
 </div>
 
-<!-- TODO: <Img src="grow-a-cache-milestones.png" /> — milestone chart / repo screenshot -->
+<div v-click>
+  <div class="eyebrow" style="margin-top:1rem">Key takeaway</div>
+  <div class="takeaway">Using LLMs to write "serious software" is definitely <span class="accent">feasible</span> — but it is not <span class="accent">automatic</span>.</div>
+</div>
 
 <!--
 Fast forward to last December — like half of our industry, I decided to take a second, more serious look at LLMs for coding. One of my projects (yes, I did several over the holidays) was called "grow-a-cache": recreate Pelikan from scratch by just prompting LLMs. But instead of one-shotting it, I followed the more natural software development trajectory from POC to MVP and onward. I chose this topic because I felt confident judging the outcome, so I could focus on the process. After 4 milestones, I stopped. Why? Because I was more or less convinced that using LLMs to write "serious software" was very much feasible — but not automatic. And it became clear that what I should do as a software engineer has to change.
