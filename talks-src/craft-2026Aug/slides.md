@@ -21,6 +21,7 @@ fonts:
   <h1>In Craft We Trust</h1>
   <div class="phase" style="margin-top:1.6rem; font-weight:400;">Shipping critical services as we stop writing code</div>
   <p class="byline mono">Yao Yue</p>
+  <p class="byline mono">(Archived from OpenAir 2026)</p>
 </div>
 
 <!-- Design system lives in styles/index.css (global). Edit there, not here. -->
