@@ -1,0 +1,337 @@
+/* ===================================================================
+   Pelikan / Flexoki design system  —  borrowed from pelikan.io
+   paper #FFFCF0 · ink #100F0F · orange #DA702C · blue #4385BE
+   IBM Plex Sans + IBM Plex Mono · bordered cards · mono badges
+   (global stylesheet — applies to every slide)
+=================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg:     #FFFCF0;
+  --bg-2:   #E6E4D9;
+  --bg-3:   #DAD8CE;
+  --ink:    #100F0F;
+  --ink-2:  #6F6E69;
+  --muted:  #878580;
+  --border: #CECDC3;
+  --orange: #DA702C;
+  --blue:   #4385BE;
+}
+
+html, body, #app, .slidev-page { background-color: var(--bg); }
+
+.slidev-layout {
+  background-color: var(--bg) !important;
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.0rem;
+  line-height: 1.6;
+  padding: 2.4rem 3rem;
+}
+
+.slidev-layout h1 {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 2.25rem;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.35em;
+}
+.slidev-layout h1::after {
+  content: '';
+  display: block;
+  width: 2.4rem;
+  height: 3px;
+  margin-top: 0.5rem;
+  background: var(--orange);
+  border-radius: 2px;
+}
+.text-center h1::after { margin-left: auto; margin-right: auto; }
+
+.slidev-layout h2 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: var(--ink);
+  margin: 0 0 0.2em;
+}
+.slidev-layout h3 {
+  font-weight: 500;
+  font-size: 0.98rem;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.slidev-layout a { color: var(--blue); text-decoration: none; }
+.slidev-layout a:hover { color: var(--orange); }
+.slidev-layout strong { color: var(--ink); font-weight: 600; }
+::selection { background: var(--orange); color: #fff; }
+
+/* ---- bracketed mono label: renders as [text], no box ---- */
+.label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.0rem;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.label::before { content: '['; }
+.label::after  { content: ']'; }
+.label--accent { color: var(--orange); }
+
+/* ---- bordered rounded card (cf. pelikan .post-card / .talk-card) ---- */
+.card { padding: 0; }
+.card ul { margin: 0.3rem 0 0; padding-left: 1.05rem; }
+.card li { margin: 0.12rem 0; color: var(--ink-2); }
+.card .head { display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.15rem; }
+.card .name { font-weight: 600; font-size: 1.05rem; color: var(--ink); }
+/* lists styled to match .reveal divs */
+.card ul.rlist li { font-size: 1.25rem; color: var(--ink-2); margin-top: 0.15rem; }
+
+.cards { display: grid; gap: 1.4rem; margin-top: 0.4rem; }
+.cards.c2 { grid-template-columns: 1fr 1fr; }
+.cards.c3 { grid-template-columns: repeat(3, 1fr); }
+
+/* 2-column cards: centered group, equal height, rounded outline */
+.cards.c2 {
+  max-width: 78%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: stretch;
+  gap: 3rem;
+}
+.cards.c2 > .card {
+  border: 1px solid var(--orange);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+}
+
+/* ---- eyebrow label: KEY TAKEAWAY etc. ---- */
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin: 0.5rem 0 0.1rem;
+}
+.eyebrow.blue { color: var(--blue); }
+.takeaway { color: var(--ink); font-weight: 500; }
+.secondary { color: var(--ink-2); font-size: 0.92rem; }
+
+/* ---- link pills (cf. pelikan .quick-link) ---- */
+.links { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: 0.55rem; margin-left: 1.2rem}
+/* scoped under .slidev-layout to beat Slidev's client link border (dashed) */
+.slidev-layout .pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  padding: 2px 7px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--ink-2) !important;
+}
+.slidev-layout .pill:hover { border-color: var(--orange); color: var(--orange) !important; }
+
+/* ---- left-rule callout (impact / warning) — accent line, not a box ---- */
+.callout {
+  border-left: 3px solid var(--orange);
+  padding: 0.1rem 0 0.1rem 0.95rem;
+  margin-top: 0.9rem;
+}
+.callout.warn { border-left-color: var(--blue); }
+.callout ul { margin: 0.25rem 0 0; padding-left: 1.1rem; }
+.callout li { color: var(--ink-2); margin: 0.1rem 0; }
+
+/* ---- pull quote — left rule, italic, no box ---- */
+.quote {
+  border-left: 3px solid var(--border);
+  padding: 0.1rem 0 0.1rem 0.95rem;
+  font-style: italic;
+  color: var(--ink);
+  margin-top: 0.9rem;
+}
+.quote .who { display: block; font-style: normal; font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
+
+.accent { color: var(--orange); font-weight: 600; }
+.mono { font-family: 'IBM Plex Mono', monospace; }
+.dim { color: var(--ink-2); }
+.note { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; }
+
+/* phase timeline row */
+.phase { font-weight: 600; font-size: 1.75rem; color: var(--ink-2); }
+.reveal { color: var(--ink-2); font-size: 1.25rem; margin-top: 0.15rem; }
+
+/* ---- title slide ---- */
+.title-slide { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+.title-slide h1 { font-size: 3.2rem; }
+.title-slide h1::after { margin: 1.9rem auto 0; }
+.byline { color: var(--ink-2); margin-top: 3.9rem; letter-spacing: 0.04em; }
+
+/* ---- section / cover divider ---- */
+.divider { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; }
+.divider .kicker { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+.divider h1 { font-size: 2.8rem; }
+.divider h1::after { display: none; }
+.divider .q { font-size: 1.7rem; font-weight: 600; color: var(--ink); font-style: italic; max-width: 22ch; }
+.divider .q .accent { font-style: italic; }
+
+/* avatars on collaboration slide */
+.avatars { display: flex; gap: 1.6rem; justify-content: center; margin-top: 0.5rem; }
+.who-card { text-align: center; }
+.who-card img { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); }
+.who-card .n { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--ink-2); margin-top: 0.4rem; }
+
+/* ---- statement: one line, centered in the space under the h1 ---- */
+.statement {
+  display: flex; align-items: center; justify-content: center;
+  height: 72%;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+/* ---- pyrs: before/now pyramids of the four steps. Level width = depth
+   (1:2:3:4). "now" masks the outer part of each block with translucent
+   paper so the visible cores (10:7.5:5:2.5 units = 40:30:20:10) form a reverse
+   pyramid — the masked part is still there, just done by the models.
+   Ordered steps → one-hue sequential ramp; identity by direct label. ---- */
+.pyrs { display: flex; gap: 1.6rem; margin-top: 0.6rem; }
+.pyr { flex: 1; min-width: 0; }
+.pyr .cap { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); text-align: center; margin-bottom: 0.45rem; }
+.pyr .lvl { position: relative; height: 2.1rem; margin-top: 3px; }
+.pyr.left .lvl  { padding-left: 3.2rem; }
+.pyr.right .lvl { padding-right: 3.2rem; }
+.pyrs .names { flex: 0 0 auto; }
+.pyrs .names .lvl { height: 2.1rem; margin-top: 3px; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--ink-2); }
+.pyr .blk { position: relative; width: var(--w); height: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+.pyr .lvl:first-of-type .blk { border-radius: 4px 4px 0 0; }
+.pyr .lvl:last-of-type .blk  { border-radius: 0 0 4px 4px; }
+.pyr .mask { position: absolute; top: 0; bottom: 0; width: calc((100% - var(--v)) / 2); background: var(--bg); opacity: 0.82; }
+.pyr .mask.l { left: 0; }  .pyr .mask.r { right: 0; }
+.pyr .pct { position: absolute; top: 50%; transform: translateY(-50%); font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; font-weight: 600; color: var(--ink-2); }
+.pyr.left .pct { left: 0; }  .pyr.right .pct { right: 0; }
+.pyr .s1 { background: #CECDC3; color: var(--ink); }
+.pyr .s2 { background: #878580; color: var(--bg); }
+.pyr .s3 { background: #575653; color: var(--bg); }
+.pyr .s4 { background: #282726; color: var(--bg); }
+
+/* ---- flow: boxed nodes joined by mono arrows ---- */
+.flow { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+.flow .node {
+  border: 1px solid var(--orange); border-radius: 10px;
+  padding: 0.7rem 1.6rem;
+  font-size: 1.35rem; font-weight: 600; color: var(--ink);
+}
+.flow .arrow { font-family: 'IBM Plex Mono', monospace; font-size: 1.4rem; color: var(--muted); }
+
+/* ---- tight 2-col cards: for slides whose card titles wrap to two lines ---- */
+.cards.c2.tight .phase  { font-size: 1.4rem; line-height: 1.25; }
+.cards.c2.tight .reveal { font-size: 1.1rem; }
+
+/* two plain text columns — no card outline */
+.cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 88%; margin-left: auto; margin-right: auto; }
+.cols2.big { max-width: 100%; gap: 4rem; }
+.cols2.big h1 { font-size: 2.6rem; }
+.cols2.big ul.rlist { margin-top: 1rem; }
+.cols2.big ul.rlist li { font-size: 1.5rem; margin-top: 0.4rem; }
+
+/* ---- figure slide: image centered, one-line description at the bottom ---- */
+.figure { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+.figure img { max-width: 92%; max-height: 62vh; object-fit: contain; }
+.figure .caption { margin-top: 1.6rem; max-width: 80%; text-align: center; color: var(--ink-2); font-size: 1.05rem; line-height: 1.5; }
+.figure .chart { width: 84%; }
+.figure .legend { display: flex; gap: 1.4rem; margin-top: 0.6rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: var(--ink-2); }
+.figure .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.figure .legend i { display: inline-block; width: 1rem; height: 2.5px; border-radius: 2px; }
+
+/* ---- themes-tbl: the "Themes (Part IX), grouped" table from the principles map ---- */
+.themes-tbl { border-collapse: collapse; width: 92%; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.themes-tbl th { text-align: left; font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.themes-tbl th, .themes-tbl td { border-bottom: 1px solid var(--border); padding: 0.32rem 0.9rem 0.32rem 0; vertical-align: top; color: var(--ink); }
+.themes-tbl .pn { font-family: 'IBM Plex Mono', monospace; font-size: 0.74rem; white-space: nowrap; color: var(--ink-2); }
+.themes-tbl .muted { color: var(--ink-2); font-size: 0.84rem; }
+.themes-tbl .chip { display: inline-block; min-width: 1.05rem; padding: 0 0.2rem; text-align: center; border: 1px solid #999; border-radius: 3px; color: #222; font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; font-weight: 700; line-height: 1.05rem; }
+
+/* ---- reboot5: five compact cards in one row + a stage below that shows one
+   diagram per click (v-click ranges keep card highlight and diagram in sync) ---- */
+.cards.reboot5 { grid-template-columns: repeat(5, 1fr); gap: 0.6rem; margin-top: 1.2rem; }
+.reboot5 > .card { cursor: pointer; position: relative; border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.7rem 0.75rem; min-width: 0; }
+.reboot5 .label { font-size: 0.7rem; }
+.reboot5 .name { font-size: 0.98rem; margin-top: 0.15rem; }
+.reboot5 .secondary { font-size: 0.72rem; line-height: 1.35; margin-top: 0.2rem; }
+.reboot5 .active { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; border-radius: 0 0 8px 8px; background: var(--orange); }
+.reboot-stage { position: relative; height: 58%; margin-top: 1.8rem; }
+.reboot-stage .stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.reboot-stage .stage img { height: 100%; width: auto; max-width: 100%; object-fit: contain; }
+.reboot-stage .placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--border); border-radius: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--muted); }
+.reboot5 > .card:hover { border-color: var(--orange); }
+
+/* ---- extracted from repeated inline styles ---- */
+.slidev-layout a.inherit { color: inherit; }
+.slidev-layout .orange { color: var(--orange); }
+.slidev-layout .muted  { color: var(--muted); }
+.eyebrow.section { margin-top: 1.5rem; }
+.takeaway.big { font-size: 1.5rem; }
+
+/* figure images fit the slide's remaining height, so the caption never falls off */
+.figure img { flex: 1 1 0; min-height: 0; max-width: 92%; max-height: none; width: auto; object-fit: contain; }
+.figure .caption { flex: 0 0 auto; }
+
+/* inline SVG chart text (page fonts apply because the SVG is inline) */
+.chart svg { width: 100%; display: block; }
+.chart text.tick { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11.5px; }
+.chart text.axis { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; }
+.chart text.dl   { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 12.5px; font-weight: 500; }
+.chart .mono     { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+.reboot-stage .stage .chart .legend { display: flex; margin-top: 0.4rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; color: var(--ink-2); }
+.reboot-stage .stage .chart .legend { gap: 1.2rem; }
+.reboot-stage .stage .chart .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.reboot-stage .stage .chart .legend i { display: inline-block; width: 1rem; height: 2.5px; border-radius: 2px; }
+
+/* ---- punchline: one centered line that lands the slide, revealed last ---- */
+/* anchored to the slide's bottom edge (layout padding is 2.4rem 3rem), independent of the content above */
+.slidev-layout { position: relative; }
+.punchline { position: absolute; left: 3rem; right: 3rem; bottom: 2.6rem; margin: 0; text-align: center; font-size: 1.5rem; font-weight: 500; color: var(--ink); }
+.punchline .lead { font-size: 1.15rem; font-weight: 400; color: var(--ink); }
+.chart text.node { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px; font-weight: 600; }
+.chart text.verb { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 0.04em; }
+.chart text.hub { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 17px; font-weight: 600; letter-spacing: 0.1em; }
+.chart text.lbl { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 19px; font-weight: 600; }
+.chart text.sub { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15.5px; }
+.slidev-layout ul.rlist.big li { font-size: 1.35rem; margin-top: 0.3rem; }
+
+/* ---- bg-fade: full-slide background image, clear in the center (where the text is) and
+   fading in toward the edges;
+   drop <div class="bg-fade"><Img src="…" alt="" /></div> as the first child of a slide ---- */
+.bg-fade { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.bg-fade img {
+  width: 100%; height: 100%; object-fit: cover; opacity: 0.32;
+  -webkit-mask-image: radial-gradient(ellipse 58% 60% at 50% 50%, transparent 0%, transparent 38%, rgba(0,0,0,.7) 75%, #000 100%);
+          mask-image: radial-gradient(ellipse 58% 60% at 50% 50%, transparent 0%, transparent 38%, rgba(0,0,0,.7) 75%, #000 100%);
+}
+.title-slide, .divider { position: relative; z-index: 1; }
+
+/* ---- bg-bands: a wide image split in two, one half hugging the top edge and one the
+   bottom, each fading toward the middle of the slide (chapter dividers) ---- */
+.bg-bands { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.bg-bands img { position: absolute; left: 0; width: 100%; height: 21%; object-fit: cover; opacity: 0.6; }
+.bg-bands img.top    { top: 0;    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 12%, rgba(0,0,0,.55) 50%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 12%, rgba(0,0,0,.55) 50%, transparent 100%); }
+.bg-bands img.bottom { bottom: 0; -webkit-mask-image: linear-gradient(to top,    #000 0%, #000 12%, rgba(0,0,0,.55) 50%, transparent 100%); mask-image: linear-gradient(to top,    #000 0%, #000 12%, rgba(0,0,0,.55) 50%, transparent 100%); }
+
+/* ---- bg-full: full-bleed photo with a darkening wash, for a one-line closing slide ---- */
+.bg-full { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.bg-full img { width: 100%; height: 100%; object-fit: cover; }
+.bg-full::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 58% 48% at 50% 50%, rgba(16,15,15,.62) 0%, rgba(16,15,15,.35) 55%, transparent 100%), linear-gradient(to bottom, rgba(16,15,15,.2), rgba(16,15,15,.45)); }
+.divider.photo .q { color: var(--bg); font-style: normal; font-size: 2.3rem; max-width: 26ch; text-shadow: 0 2px 14px rgba(0,0,0,.55); }
+.divider.photo .q .accent { font-style: italic; }
+
+/* ---- strip: a row of small figures scaled to a shared height (mixed aspect ratios stay level) ---- */
+.strip { display: flex; justify-content: center; align-items: flex-end; gap: 1.4rem; margin-top: 1.2rem; }
+.strip figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; min-width: 0; }
+.strip img { height: 7.6rem; width: auto; max-width: 100%; object-fit: contain; }
+.strip figcaption { font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; color: var(--muted); }

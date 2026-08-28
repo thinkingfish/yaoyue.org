@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 400" role="img" aria-label="cachesim capabilities: import traces into Parquet, replay against segcache, cuckoo, or oracle engines, report hit/miss statistics">
+<rect width="1180" height="400" fill="#FFFCF0"/>
+<text x="30" y="40" font-family="'IBM Plex Sans',Helvetica,Arial,sans-serif" font-size="24" font-weight="600" fill="#100F0F">cachesim</text>
+<text x="148" y="40" font-family="'IBM Plex Sans',Helvetica,Arial,sans-serif" font-size="15" fill="#6F6E69">cache trace simulator for cache-rs</text>
+<text x="1150" y="40" text-anchor="end" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#878580">github.com/pelikan-io/cachesim</text>
+<line x1="30" y1="54" x2="1150" y2="54" stroke="#CECDC3"/>
+<rect x="30" y="80" width="270" height="108" rx="8" fill="none" stroke="#CECDC3" stroke-width="1.2"/>
+<text x="44" y="100" font-family="'IBM Plex Mono',Menlo,monospace" font-size="10.5" letter-spacing="1.5" fill="#DA702C">INPUTS</text>
+<text x="44" y="122" font-family="'IBM Plex Sans',Helvetica,Arial,sans-serif" font-size="16" font-weight="600" fill="#100F0F">Trace sources</text>
+<text x="44" y="146" font-family="'IBM Plex Sans',Helvetica,Arial,sans-serif" font-size="12.5" fill="#6F6E69">libCacheSim binary formats</text>
+<text x="44" y="164" font-family="'IBM Plex Sans',Helvetica,Arial,sans-serif" font-size="12.5" fill="#6F6E69">pelikan-io/cache-trace CSV</text>
+<line x1="300" y1="134.0" x2="362" y2="134.0" stroke="#6F6E69" stroke-width="1.6"/>
+<path d="M361,129.0 L370,134.0 L361,139.0 Z" fill="#6F6E69"/>
+<text x="335.0" y="126.0" text-anchor="middle" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" fill="#DA702C">convert</text>
+<rect x="370" y="80" width="300" height="108" rx="8" fill="none" stroke="#CECDC3" stroke-width="1.2"/>
+<text x="384" y="100" font-family="'IBM Plex Mono',Menlo,monospace" font-size="10.5" letter-spacing="1.5" fill="#DA702C">CANONICAL FORMAT</text>
+<text x="384" y="122" font-family="'IBM Plex Sans',Helvetica,Arial,sans-serif" font-size="16" font-weight="600" fill="#100F0F">Parquet trace</text>
+<text x="384" y="146" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11.5" fill="#6F6E69">timestamp · obj_id · obj_size</text>
+<text x="384" y="164" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11.5" fill="#6F6E69">next_access_vtime · op · ttl</text>
+<line x1="670" y1="134.0" x2="732" y2="134.0" stroke="#6F6E69" stroke-width="1.6"/>
+<path d="M731,129.0 L740,134.0 L731,139.0 Z" fill="#6F6E69"/>
+<text x="705.0" y="126.0" text-anchor="middle" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" fill="#DA702C">simulate</text>
+<rect x="740" y="80" width="410" height="108" rx="8" fill="none" stroke="#CECDC3" stroke-width="1.2"/>
+<text x="754" y="100" font-family="'IBM Plex Mono',Menlo,monospace" font-size="10.5" letter-spacing="1.5" fill="#DA702C">SIMULATE</text>
+<text x="754" y="122" font-family="'IBM Plex Sans',Helvetica,Arial,sans-serif" font-size="16" font-weight="600" fill="#100F0F">Replay engines</text>
+<text x="754" y="146" font-family="'IBM Plex Sans',Helvetica,Arial,sans-serif" font-size="12.5" fill="#6F6E69">segcache — 7 eviction policies, incl. S3-FIFO</text>
+<text x="754" y="164" font-family="'IBM Plex Sans',Helvetica,Arial,sans-serif" font-size="12.5" fill="#6F6E69">cuckoo — fixed-size slots, random / expire</text>
+<rect x="30" y="212" width="270" height="84" rx="8" fill="none" stroke="#CECDC3" stroke-width="1.2"/>
+<text x="44" y="232" font-family="'IBM Plex Mono',Menlo,monospace" font-size="10.5" letter-spacing="1.5" fill="#DA702C">INSPECT</text>
+<text x="44" y="254" font-family="'IBM Plex Sans',Helvetica,Arial,sans-serif" font-size="16" font-weight="600" fill="#100F0F">cachesim info</text>
+<text x="44" y="276" font-family="'IBM Plex Sans',Helvetica,Arial,sans-serif" font-size="12.5" fill="#6F6E69">summary statistics for a trace</text>
+<rect x="370" y="212" width="300" height="84" rx="8" fill="none" stroke="#CECDC3" stroke-width="1.2"/>
+<text x="384" y="232" font-family="'IBM Plex Mono',Menlo,monospace" font-size="10.5" letter-spacing="1.5" fill="#DA702C">OUTPUT</text>
+<text x="384" y="254" font-family="'IBM Plex Sans',Helvetica,Arial,sans-serif" font-size="16" font-weight="600" fill="#100F0F">Results</text>
+<text x="384" y="276" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" fill="#6F6E69">hits · misses · inserts → hit rate</text>
+<rect x="740" y="212" width="410" height="84" rx="8" fill="#F2F0E5" stroke="#F2F0E5" stroke-width="1.2"/>
+<text x="754" y="232" font-family="'IBM Plex Mono',Menlo,monospace" font-size="10.5" letter-spacing="1.5" fill="#DA702C">REFERENCE</text>
+<text x="754" y="254" font-family="'IBM Plex Sans',Helvetica,Arial,sans-serif" font-size="16" font-weight="600" fill="#100F0F">Oracle baselines</text>
+<text x="754" y="276" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" fill="#6F6E69">belady · belady-size — offline-optimal upper bound</text>
+<line x1="740" y1="254.0" x2="678" y2="254.0" stroke="#6F6E69" stroke-width="1.6"/>
+<path d="M679,249.0 L670,254.0 L679,259.0 Z" fill="#6F6E69"/>
+<text x="30" y="336" font-family="'IBM Plex Mono',Menlo,monospace" font-size="10.5" letter-spacing="1.5" fill="#DA702C">ONE COMMAND</text>
+<rect x="30" y="346" width="1120" height="34" rx="6" fill="#F2F0E5"/>
+<text x="44" y="368" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12.5" fill="#100F0F">cachesim simulate -t trace.parquet -c 64M segcache -p s3-fifo</text>
+</svg>

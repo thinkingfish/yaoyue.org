@@ -1,1 +1,0 @@
-import{L as e,ht as t,y as n}from"./modules/shiki-Db35i7ln.js";import{tt as r}from"./index-yXaZBPME.js";var i=[`src`],a={__name:`Img`,props:{src:{type:String,required:!0}},setup(a){let{$slidev:o,$nav:s,$clicksContext:c,$clicks:l,$page:u,$renderContext:d,$frontmatter:f}=r();return(r,o)=>(e(),n(`img`,{src:t(`/talks/craft/`)+a.src},null,8,i))}};export{a as t};

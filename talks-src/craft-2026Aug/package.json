@@ -1,0 +1,15 @@
+{
+  "name": "talk-craft-2026Aug",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build --base /talks/craft-2026Aug/ --out ../../public/talks/craft-2026Aug",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "52.15.2",
+    "@slidev/theme-default": "latest",
+    "vue": "^3.4.29"
+  }
+}
